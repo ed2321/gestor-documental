@@ -151,7 +151,22 @@
             <?php } ?>
             <li>
                 <a href="../../control/documentos/" style="text-transform: uppercase;">
-                    <i class="fa fa-file"></i> <span>Control de Documento</span>
+                    <i class="fa fa-file"></i> <span>listado de documentos</span>
+                </a>
+            </li>
+            <li>
+                <a href="../../control/documentos/" style="text-transform: uppercase;">
+                    <i class="fa fa-file"></i> <span>gestion de documentos</span>
+                </a>
+            </li>
+            <li>
+                <a href="../../control/documentos/" style="text-transform: uppercase;">
+                    <i class="fa fa-file"></i> <span>gestion de metadata</span>
+                </a>
+            </li>
+            <li>
+                <a href="../../control/documentos/" style="text-transform: uppercase;">
+                    <i class="fa fa-file"></i> <span>gestion de usuarios</span>
                 </a>
             </li>
             <li>
