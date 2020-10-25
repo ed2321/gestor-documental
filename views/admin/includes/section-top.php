@@ -160,7 +160,7 @@
                 </a>
             </li>
             <li>
-                <a href="../../control/documentos/" style="text-transform: uppercase;">
+                <a href="../../control/metadata/" style="text-transform: uppercase;">
                     <i class="fa fa-file"></i> <span>gestion de metadata</span>
                 </a>
             </li>
