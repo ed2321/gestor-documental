@@ -10,7 +10,7 @@
                 </div><!--/col-md-3-->
                 <!-- End About -->
                 <!-- Latest -->
-            <div class="col-md-3 col-sm-4 md-margin-bottom-40">
+            <!-- <div class="col-md-3 col-sm-4 md-margin-bottom-40">
               <div class="posts">
                 <div class="headline"><h2>Visitantes</h2></div>
                 <ul class="list-unstyled latest-list">
@@ -22,7 +22,8 @@
                     Desde el principio: 18.084                  </li>
                 </ul>
               </div>
-            </div><!--/col-md-3-->
+            </div> -->
+            <!--/col-md-3-->
             <!-- End Latest -->
             <!-- Link List -->
             <div class="col-md-3 col-sm-4  md-margin-bottom-40">
@@ -52,10 +53,6 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-8">
-                  <p>
-                    2016 © All Rights Reserved.
-                    Desarrollado por: <a href="#">Jefferson Bahamon - Andres Parra - Wilermer Gelves - Jhon Ibarra</a>
-                  </p>
                 </div>
                 <!-- Social Links -->
                 <div class="col-md-4">
