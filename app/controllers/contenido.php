@@ -46,8 +46,8 @@
 		 *  dejar este metodo solo en el controlador de categorias
 		 */
 		private function pushSubCategories($cat, $subCat, $subCat2) {
+			$obj = array();
 			if (!empty($cat) and !empty($subCat)) {
-				$obj = array();
 				foreach ($cat as $value) {
 					$id = $value[0];
 					$newCat = new CatDTO($value[1]);
