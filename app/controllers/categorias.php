@@ -34,18 +34,18 @@
 		 *  Metodo que crea los objetos de las categorias y asigna las sub-categorias a cada categoria
 		 */
 		private function pushSubCategories($cat, $subCat, $subCat2) {
+			$obj = [];
 			if (!empty($cat) and !empty($subCat)) {
-				$obj = array();
 				foreach ($cat as $value) {
 					$id = $value[0];
 					$newCat = new CatDTO($value[1]);
 					$newCat->setId($id);
-					$array = array();
+					$array = [];
 					for ($i=0; $i < count($subCat); $i++) {
 						if ($id == $subCat[$i][2]) {
 							$sub = new SubCatDTO($subCat[$i][1], $subCat[$i][2]);
 							$sub->setId($subCat[$i][0]);
-							$arraySub = array();
+							$arraySub = [];
 							if (!empty($subCat2)) {
 								foreach ($subCat2 as $s) {
 									if ($subCat[$i][0] == $s[2]) {

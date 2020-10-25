@@ -99,6 +99,7 @@
                 <a href="../../contenido/principal/"><i class="fa fa-home"></i> <span>HOME</span></a>
             </li>
             <?php
+            if (!empty($categorias)) {
             foreach ($categorias as $cat) { ?>
                <?php if (!empty($cat->getSubCategorias())) {?>
                <li>
@@ -145,6 +146,7 @@
                   <?php } ?>
                   </ul>
                </li>
+                  <?php } ?>
                <?php } ?>
             <?php } ?>
             <li>
