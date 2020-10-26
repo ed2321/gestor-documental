@@ -13,6 +13,7 @@
 	<div class="box box-danger">
 		<div class="box-header with-border text-center">
 			<h3 class="box-title"><b>Listado de categorias de documentos</b></h3>
+			<button class="btn btn-danger btn-fixed" data-toggle="modal" data-target="#myModalDocCategori"><i class="fa fa-upload"></i></button>
 		</div>
 		<div class="box-body">
 			<div class="row">
@@ -46,5 +47,27 @@
 		</div>
 	</div>
 </section>
+
+<!-- Modal Crear categorias archivos -->
+<div class="modal fade modal-danger" id="myModalDocCategori" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	  <div class="modal-dialog" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	        <h4 class="modal-title" id="myModalLabel">Formulario para el registro de cagorias de documentos</h4>
+	      </div>
+			<div class="modal-body">
+				<div class="form-group">
+					<label for="titulo">Titulo de la categoria</label>
+					<input type="text" class="form-control" name="title_doc" id="nombre_categoria" placeholder="Nombre de categoria">
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+				<button type="button" class="btn btn-primary" id="btn-load-cat">Save Categoria</button>
+			</div>
+	    </div>
+	  </div>
+</div>
 
 <?php include VIEWSPATH . DS .'admin'. DS .'includes'. DS .'section-footer.php'; ?>
