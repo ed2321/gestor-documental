@@ -27,7 +27,7 @@
 			try {
 				$result = [];
 				$conn = DB::instance();
-				$query = "SELECT * FROM documentos_categorias ORDER BY id_doc_cat DESC";
+				$query = "SELECT * FROM documentos_categorias";
 				$res = $conn->prepare($query);
 				$res->execute();
 				$conn->close();
@@ -44,44 +44,17 @@
 			}
 		}
 
-		/**
-		 * Metodo que borra informacion de un documenton de la DB
-		 * @var $id identificador del documento en la DB
-		 * @return Array con informacion de la transaccion
-		 */
-		public static function delete($id) {
+		public static function delete_documentos_categorias($id_doc_cat) {
 			try {
-
 				$conn = DB::instance();
-				$query = "DELETE g, d FROM documentos d INNER JOIN gestion_documentos g ON d.id = g.id_documento WHERE d.id = ?";
+				$query = "DELETE FROM documentos_categorias WHERE id_doc_cat = ?";
 				$res = $conn->prepare($query);
-				$res->bindParam(1, $id, \PDO::PARAM_INT);
+				$res->bindParam(1, $id_doc_cat, \PDO::PARAM_INT);
 				$res->execute();
 				$conn->close();
 				return ['ok' => true];
-				
 			} catch (\PDOException $e) {
 				return ['ok' => false, 'error' => 'Error:! ' . $e->getMessage()];
-			}
-		}
-
-		/**
-		 * Metodo que retorna el id del ultimo documento guardado
-		 * @return id del documento
-		 */
-		public static function findMax() {
-			try {
-
-				$conn = DB::instance();
-				$query = "SELECT MAX(id) FROM documentos";
-				$res = $conn->prepare($query);
-				$res->bindParam(1, $id, \PDO::PARAM_INT);
-				$res->execute();
-				$conn->close();
-				return $res->fetch()[0];
-				
-			} catch (\PDOException $e) {
-				return null;
 			}
 		}
 	}
