@@ -107,7 +107,6 @@
 
     			 //aquí tenemos el método
             	$this->_method = $url[1];
-
     			// si existe un metodo procedemos a borrar la posicion correspondiente
     			if (method_exists($this->_controller, $this->_method)) {
 

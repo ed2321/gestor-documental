@@ -23,11 +23,11 @@
 		 * Metodo que borra un documento de la DB y del servidor
 		 * @return obj JSON con informacion de la transaccion
 		 */
-		function delete_documento_categoria() {
+		function delete_documentos_categorias() {
 			$id = htmlspecialchars($_POST['id_doc_cat']);
 			$json;
 			if (!empty($id)) {
-				$res = DocDAO::delete_documentos_categorias($id);
+				$res = MetadataDAO::delete_documentos_categorias($id);
 				$json = $res;
 				
 			} else {
