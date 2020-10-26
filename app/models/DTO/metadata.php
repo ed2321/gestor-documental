@@ -2,53 +2,33 @@
 
 	namespace App\Models\DTO;
 
-	/**
-	*  Clase DTO que representa los documentos cargados en el sistema
-	*/
 	class Metadata {
 		
-		/**
-		 * @var $id representa el identificador unico del documento
-		 */
+		
 		private $_id_doc_cat;
 
-		/**
-		 * @var $titulo contiene el titulo del documento
-		 */
 		private $_nombre_categoria;
 
 
-		function __construct($id_doc_cat, $nombre_categoria)	{
+		function __construct($id_doc_cat, $nombre_categoria) {
 			$this->_id_doc_cat = $id_doc_cat;
 			$this->_nombre_categoria = $nombre_categoria;
 		}
-
-		/**
-		 * Metodos Getters y Setters
-		 */
-		function set_id_doc_cat($id_doc_cat)
-		{
+		
+		function set_id_doc_cat($id_doc_cat) {
 			$this->_id_doc_cat = $id_doc_cat;
 		}
 
-		function get_id_doc_cat()
-		{
-			return $this->_documento;
+		function get_id_doc_cat() {
+			return $this->_id_doc_cat;
 		}
 
-		function setDocumento($doc)
-		{
-			$this->_documento = $doc;
+		function set_nombre_categoria($nombre_categoria) {
+			$this->_nombre_categoria = $nombre_categoria;
 		}
 
-		function getIdContenido()
-		{
-			return $this->_id_contenido;
-		}
-
-		function setIdContenido($id_con)
-		{
-			$this->_id_contenido = $id_con;
+		function get_nombre_categoria() {
+			return $this->_nombre_categoria;
 		}
 	}
 
