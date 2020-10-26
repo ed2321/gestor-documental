@@ -35,6 +35,22 @@
 			}
 			print(json_encode($json));
 		}
+		/**
+		 * Metodo que borra un documento de la DB y del servidor
+		 * @return obj JSON con informacion de la transaccion
+		 */
+		function update_documentos_categorias() {
+			$id = htmlspecialchars($_POST['id_doc_cat']);
+			$nombre = htmlspecialchars($_POST['nombre_categoria']);
+			$json;
+			if (!empty($id) && !empty($nombre)) {
+				$res = MetadataDAO::update_documentos_categorias($id,$nombre);
+				$json = $res;
+			} else {
+				$json = ['ok' => false, 'error' => 'Faltan datos'];
+			}
+			print(json_encode($json));
+		}
 		
 	}
 
