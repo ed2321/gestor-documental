@@ -3,8 +3,8 @@
     <div class="info-box p-rel">
     	<span class="info-box-icon"><i class="fa fa-book"></i></span>
     	<div class="info-box-content">
-          	<h2 class="info-box-text"><b>Control de Documentosttttttttttt</b></h2>
-          	<span class="info-box-number">A continuación podra consultar el listado de los documentos cargados en el sistema</span>
+          	<h2 class="info-box-text"><b>Control de Categorias de Documentos</b></h2>
+          	<span class="info-box-number">A continuación podra consultar el listado de las categorias de documentos cargados en el sistema</span>
         </div>
     </div>
 </section>
@@ -12,7 +12,7 @@
 	<!-- Your Page Content Here -->
 	<div class="box box-danger">
 		<div class="box-header with-border text-center">
-			<h3 class="box-title"><b>Listado de documentos</b></h3>
+			<h3 class="box-title"><b>Listado de categorias de documentos</b></h3>
 		</div>
 		<div class="box-body">
 			<div class="row">
@@ -20,21 +20,21 @@
 					<table id="list_doc_cat" class="display table table-bordered table-striped dataTable" cellspacing="0" width="100%">
 		                <thead>
 		                	<tr>
-			                  <th>Nombre Categoria Documento</th>
+			                  <th>Categoria</th>
 			                  <th style="width: 90px">Update</th>
 			                  <th style="width: 100px">Delete</th>
 		                	</tr>
 		               	</thead>
-		                <?php 
+						<?php 
 		                if (!empty($list_doc_cat)) {
 		                	foreach ($list_doc_cat as $doc_cat) {
 		                		print('<tr>
-				                  <td>'.$doc->nombre_categoria.'</td>
+				                  <td>'.$doc_cat['nombre_categoria'].'</td>
 				                  <td style="text-align: center;">
-				                  	<button data-id="'.$doc_cat->id_doc_cat.'" data-name="'.$doc->nombre_categoria.'" class="btn btn-danger btn-sm btn-delete-doc"><i class="fa fa-trash"></i></button>
+				                  	<button data-id="'.$doc_cat['id_doc_cat'].'" data-name="'.$doc_cat['nombre_categoria'].'" class="btn btn-danger btn-sm btn-update-doc-cat"><i class="fa fa-pencil"></i></button>
 				                  </td>
 				                  <td style="text-align: center;">
-				                  	<button data-id="'.$doc_cat->id_doc_cat.'" data-name="'.$doc->nombre_categoria.'" class="btn btn-danger btn-sm btn-delete-doc"><i class="fa fa-trash"></i></button>
+				                  	<button data-id="'.$doc_cat['id_doc_cat'].'" data-name="'.$doc_cat['nombre_categoria'].'" class="btn btn-danger btn-sm btn-delete-doc-cat"><i class="fa fa-trash"></i></button>
 				                  </td>
 				                </tr>');
 				            }

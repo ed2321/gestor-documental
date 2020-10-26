@@ -32,7 +32,7 @@
 				$res->execute();
 				$conn->close();
 				if ($res->rowCount() > 0) {
-					while ($row = $res->fetch_assoc()) {
+					foreach ($res->fetchAll() as $row ) {
 						$result[] = $row;
 					}
 					return $result;
