@@ -13,7 +13,7 @@
 	<div class="box box-danger">
 		<div class="box-header with-border text-center">
 			<h3 class="box-title"><b>Listado de categorias de documentos</b></h3>
-			<button class="btn btn-danger btn-fixed" data-toggle="modal" data-target="#myModalDocCategori"><i class="fa fa-upload"></i></button>
+			<button class="btn btn-danger btn-fixed" data-toggle="modal" data-target="#myModalDocCategori"><i class="fa fa-plus"></i></button>
 		</div>
 		<div class="box-body">
 			<div class="row">
