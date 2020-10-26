@@ -29,13 +29,7 @@
 				return ['ok' => true, 'error' => 'Error:! ' . $e->getMessage()];
 			}
 		}
-
-		/**
-		 *  Metodo que trae todos los documentos relacionados con una categoria
-		 * @var $id identifica la categoria a consultar
-		 * @return Array con los documentos encontrados
-		 */
-		public static function select_documentos_categorias($id) {
+		public static function select_documentos_categorias() {
 			try {
 				$conn = DB::instance();
 				$query = "SELECT * FROM documentos_categorias ORDER BY id_doc_cat DESC";

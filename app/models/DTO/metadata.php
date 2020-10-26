@@ -26,9 +26,9 @@
 		/**
 		 * Metodos Getters y Setters
 		 */
-		function set_id_doc_cat($desc)
+		function set_id_doc_cat($id_doc_cat)
 		{
-			$this->_descripcion = $desc;
+			$this->_id_doc_cat = $id_doc_cat;
 		}
 
 		function get_id_doc_cat()
