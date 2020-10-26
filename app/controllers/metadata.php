@@ -36,7 +36,24 @@
 			print(json_encode($json));
 		}
 		/**
-		 * Metodo que borra un documento de la DB y del servidor
+		 * Metodo que inserta un documento de la DB y del servidor
+		 * @return obj JSON con informacion de la transaccion
+		 */
+		function insert_documentos_categorias() {
+			$nombre_categoria = htmlspecialchars($_POST['nombre_categoria']);
+			$json;
+			if (!empty($nombre_categoria)) {
+				$data = new MetadataDTO($nombre_categoria);
+				$res = MetadataDAO::insert_documentos_categorias($data);
+				$json = $res;
+				
+			} else {
+				$json = ['ok' => false, 'error' => 'Faltan datos'];
+			}
+			print(json_encode($json));
+		}
+		/**
+		 * Metodo que actualiza un documento de la DB y del servidor
 		 * @return obj JSON con informacion de la transaccion
 		 */
 		function update_documentos_categorias() {
@@ -46,6 +63,7 @@
 			if (!empty($id) && !empty($nombre)) {
 				$res = MetadataDAO::update_documentos_categorias($id,$nombre);
 				$json = $res;
+				
 			} else {
 				$json = ['ok' => false, 'error' => 'Faltan datos'];
 			}

@@ -10,8 +10,7 @@
 		private $_nombre_categoria;
 
 
-		function __construct($id_doc_cat, $nombre_categoria) {
-			$this->_id_doc_cat = $id_doc_cat;
+		function __construct($nombre_categoria) {
 			$this->_nombre_categoria = $nombre_categoria;
 		}
 		
