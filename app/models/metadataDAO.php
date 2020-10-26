@@ -9,7 +9,7 @@
 	*  Clase que controla la gestion con la DB para los documentos de cada categoria del modelo documental
 	*/
 	class MetadataDAO {
-		
+
 		public static function insert_documentos_categorias($obj) {
 			try {
 				$conn = DB::instance();
@@ -25,17 +25,19 @@
 		}
 		public static function select_documentos_categorias() {
 			try {
+				$result = [];
 				$conn = DB::instance();
 				$query = "SELECT * FROM documentos_categorias ORDER BY id_doc_cat DESC";
 				$res = $conn->prepare($query);
 				$res->execute();
-				$rows = $res->rowCount();
 				$conn->close();
-				if ($rows > 0) {
-					return $res->fetchAll();
+				if ($res->rowCount() > 0) {
+					while ($row = $res->fetch_assoc()) {
+						$result[] = $row;
+					}
+					return $result;
 				}
-				return [];
-
+				return $result;
 			} catch (\PDOException $e) {
 				print($e-getMessage());
 				return null;
