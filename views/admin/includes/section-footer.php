@@ -36,6 +36,7 @@
             }
         });
         $('#example2').DataTable();
+        $('#list_doc_cat').DataTable();
     });
   </script>
   <script>

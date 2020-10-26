@@ -488,7 +488,31 @@ $(document).ready(function () {
   				}
   			}
   		});
-  	});
+	  });
+	  
+
+	   /*
+	 * Evento que se dispara cuando se desea eliminar una categoria de documento
+	 */
+	 $("body").on("click", ".btn-delete-doc-cat", function(){
+		var id = $(this).data("id");
+
+		$.post('../../metadata/delete_documentos_categorias/', {id_doc_cat:id}, function(response){
+			var res = JSON.parse(response);
+				if (res.ok) {
+					location.reload(true);
+				}
+				else {
+					$.jGrowl(res.error, {
+						position: "bottom-right",
+						header: "Ocurrio un problema",
+						theme: "bg-red",
+						life: 5000
+					});
+				}
+		});
+	});
+
 
   	$("body").on("mouseenter", ".treeview-menu.menu-open li", function(e) {
   		$(this).addClass("active");
