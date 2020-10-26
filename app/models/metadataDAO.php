@@ -15,15 +15,13 @@
 		 *  Metodo que guarda en la base de datos la informacion referente al documento
 		 * @return onjeto JSON con la respuesta a la transaccion
 		*/
-		public static function load($doc) {
+		public static function insert_documentos_categorias($doc) {
 			try {
 				$conn = DB::instance();
-				$query = "INSERT INTO documentos(titulo,descripcion, documento, id_contenido) VALUES(?,?,?,?)";
+				$query = "INSERT INTO documentos_categorias(id_doc_cat,nombre_categoria) VALUES(?,?)";
 				$res = $conn->prepare($query);
 				$res->bindValue(1, $doc->getTitulo(), \PDO::PARAM_STR);
 				$res->bindValue(2, $doc->getDescripcion(), \PDO::PARAM_STR);
-				$res->bindValue(3, $doc->getDocumento(), \PDO::PARAM_STR);
-				$res->bindValue(4, $doc->getIdContenido(), \PDO::PARAM_INT);
 				$res->execute();
 				$conn->close();
 				return ['ok' => true];
@@ -37,19 +35,18 @@
 		 * @var $id identifica la categoria a consultar
 		 * @return Array con los documentos encontrados
 		 */
-		public static function select($id) {
+		public static function select_documentos_categorias($id) {
 			try {
 				$conn = DB::instance();
-				$query = "SELECT * FROM documentos WHERE id_contenido = ? ORDER BY id DESC";
+				$query = "SELECT * FROM documentos_categorias ORDER BY id_doc_cat DESC";
 				$res = $conn->prepare($query);
-				$res->bindParam(1, $id, \PDO::PARAM_INT);
 				$res->execute();
 				$rows = $res->rowCount();
 				$conn->close();
 				if ($rows > 0) {
 					return $res->fetchAll();
 				}
-				return null;
+				return [];
 
 			} catch (\PDOException $e) {
 				print($e-getMessage());

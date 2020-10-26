@@ -193,7 +193,7 @@
 			$title = htmlspecialchars($_POST['title_doc']);
 			$desc = htmlspecialchars($_POST['desc_doc']);
 			$file = $_FILES['file_doc'];
-			$id_cont = htmlspecialchars($_POST['id_cat']);
+			$id_cont = htmlspecialchars(1);//corregir colocar en la modal la categorua
 			$expide = htmlspecialchars($_POST['expide_doc']);
 			$ver = htmlspecialchars($_POST['version_doc']);
 			$est = htmlspecialchars($_POST['estate_doc']);

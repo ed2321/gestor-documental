@@ -10,64 +10,28 @@
 		/**
 		 * @var $id representa el identificador unico del documento
 		 */
-		private $_id;
+		private $_id_doc_cat;
 
 		/**
 		 * @var $titulo contiene el titulo del documento
 		 */
-		private $_titulo;
+		private $_nombre_categoria;
 
-		/**
-		 * @var $descripcion contiene la descripcion del documento
-		 */
-		private $_descripcion;
 
-		/**
-		 * @var $id_contenido contiene el identificador de la categoria a la que pertenece
-		 */
-		private $_id_contenido;
-
-		/**
-		 * @var $documento contiene el nombre del documento
-		 */
-		private $_documento;
-
-		function __construct($titulo, $descripcion, $id_contenido, $doc)	{
-			$this->_titulo = $titulo;
-			$this->_descripcion = $descripcion;
-			$this->_id_contenido = $id_contenido;
-			$this->_documento = $doc;
+		function __construct($id_doc_cat, $nombre_categoria)	{
+			$this->_id_doc_cat = $id_doc_cat;
+			$this->_nombre_categoria = $nombre_categoria;
 		}
 
 		/**
 		 * Metodos Getters y Setters
 		 */
-		function getId()
-		{
-			return $this->_id;
-		}
-
-		function getTitulo()
-		{
-			return $this->_titulo;
-		}
-
-		function setTitulo($title)
-		{
-			$this->_titulo = $title;
-		}
-
-		function getDescripcion()
-		{
-			return $this->_descripcion;
-		}
-
-		function setDescripcion($desc)
+		function set_id_doc_cat($desc)
 		{
 			$this->_descripcion = $desc;
 		}
 
-		function getDocumento()
+		function get_id_doc_cat()
 		{
 			return $this->_documento;
 		}
