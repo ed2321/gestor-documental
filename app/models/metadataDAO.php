@@ -61,7 +61,7 @@
 		public static function update_documentos_categorias($id_doc_cat,$nombre_categoria) {
 			try {
 				$conn = DB::instance();
-				$query = "UPDATE SET nombre_categoria = '?' FROM documentos_categorias WHERE id_doc_cat = ?";
+				$query = "UPDATE documentos_categorias SET nombre_categoria = ? WHERE id_doc_cat = ?";
 				$res = $conn->prepare($query);
 				$res->bindParam(1, $nombre_categoria,\PDO::PARAM_STR);
 				$res->bindParam(2, $id_doc_cat, \PDO::PARAM_INT);

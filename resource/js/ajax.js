@@ -535,7 +535,7 @@ $(document).ready(function () {
 					}
 			});
 		} else {
-			$.post('../../metadata/update_documentos_categorias/', {id_doc_cap:id_doc_cap,nombre_categoria:nombre_categoria}, function(response){
+			$.post('../../metadata/update_documentos_categorias/', {id_doc_cat:id_doc_cap,nombre_categoria:nombre_categoria}, function(response){
 				var res = JSON.parse(response);
 					if (res.ok) {
 						location.reload(true);
