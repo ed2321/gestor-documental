@@ -10,18 +10,12 @@
 	*/
 	class MetadataDAO {
 		
-		
-		/**
-		 *  Metodo que guarda en la base de datos la informacion referente al documento
-		 * @return onjeto JSON con la respuesta a la transaccion
-		*/
-		public static function insert_documentos_categorias($doc) {
+		public static function insert_documentos_categorias($obj) {
 			try {
 				$conn = DB::instance();
-				$query = "INSERT INTO documentos_categorias(id_doc_cat,nombre_categoria) VALUES(?,?)";
+				$query = "INSERT INTO documentos_categorias(nombre_categoria) VALUES(?)";
 				$res = $conn->prepare($query);
-				$res->bindValue(1, $doc->getTitulo(), \PDO::PARAM_STR);
-				$res->bindValue(2, $doc->getDescripcion(), \PDO::PARAM_STR);
+				$res->bindValue(1, $obj->get_nombre_categoria(), \PDO::PARAM_STR);
 				$res->execute();
 				$conn->close();
 				return ['ok' => true];
