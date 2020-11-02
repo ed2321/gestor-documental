@@ -488,7 +488,80 @@ $(document).ready(function () {
   				}
   			}
   		});
-  	});
+	  });
+	  
+
+	   /*
+	 * Evento que se dispara cuando se desea eliminar una categoria de documento
+	 */
+	 $("body").on("click", ".btn-delete-doc-cat", function(){
+		var id = $(this).data("id");
+
+		$.post('../../metadata/delete_documentos_categorias/', {id_doc_cat:id}, function(response){
+			var res = JSON.parse(response);
+				if (res.ok) {
+					location.reload(true);
+				}
+				else {
+					$.jGrowl(res.error, {
+						position: "bottom-right",
+						header: "Ocurrio un problema",
+						theme: "bg-red",
+						life: 5000
+					});
+				}
+		});
+	});
+
+	/*
+	*  Evento sobre el formulario de guardar categorias que envia la informacion al servidor
+	*/
+	$("#btn-load-cat").on("click", function() {
+		var id_doc_cap = $(this).data("id_doc_cap");
+		var nombre_categoria = $("#nombre_categoria").val();
+		if (!id_doc_cap) {
+			$.post('../../metadata/insert_documentos_categorias/', {nombre_categoria:nombre_categoria}, function(response){
+				var res = JSON.parse(response);
+					if (res.ok) {
+						location.reload(true);
+					}
+					else {
+						$.jGrowl(res.error, {
+							position: "bottom-right",
+							header: "Ocurrio un problema",
+							theme: "bg-red",
+							life: 5000
+						});
+					}
+			});
+		} else {
+			$.post('../../metadata/update_documentos_categorias/', {id_doc_cat:id_doc_cap,nombre_categoria:nombre_categoria}, function(response){
+				var res = JSON.parse(response);
+					if (res.ok) {
+						location.reload(true);
+					}
+					else {
+						$.jGrowl(res.error, {
+							position: "bottom-right",
+							header: "Ocurrio un problema",
+							theme: "bg-red",
+							life: 5000
+						});
+					}
+			});
+		}
+		
+	});
+
+	$("body").on("click", ".btn-update-doc-cat", function(){
+		var id = $(this).data("id");
+		var nombreCategori = $(this).data("name");
+		$("#nombre_categoria").val(nombreCategori);
+		$("#btn-load-cat").data("id_doc_cap", id);
+		$('#myModalDocCategori').modal('show');
+	});
+	
+
 
   	$("body").on("mouseenter", ".treeview-menu.menu-open li", function(e) {
   		$(this).addClass("active");

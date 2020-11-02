@@ -19,6 +19,7 @@
 	 	 */
 	 	public static function insert($obj) {
 	 		try {
+				print_r($obj);
 	 			$conn = DB::instance();
 	 			$query = "INSERT INTO gestion_documentos(id_documento, fecha_modificacion, expide, version, estado, revisado, aprobado) VALUES(?,?,?,?,?,?,?)";
 	 			$res = $conn->prepare($query);

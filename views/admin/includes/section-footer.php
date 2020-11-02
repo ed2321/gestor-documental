@@ -6,7 +6,6 @@
                 <img width="150" src="../../resource/img/logo_ufps_blanco.png">
                 <h3>Universidad Fransisco de Paula Santander</h3>
                 <h5>Programa Ingenieria de Sistemas</h5>
-                <p>Creado por: <b>Jefferson Bahamon Cuevas - Wilmer Fernando Gelves - Andrea Parra - Alexander Ibarra</b></p>
             </div>
         </footer>
     </div>
@@ -37,6 +36,7 @@
             }
         });
         $('#example2').DataTable();
+        $('#list_doc_cat').DataTable();
     });
   </script>
   <script>

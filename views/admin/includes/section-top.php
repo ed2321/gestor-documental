@@ -95,13 +95,13 @@
         </div>
         <!-- Sidebar Menu -->
         <ul class="sidebar-menu">
-          <li class="header">MENU PRINCIPAL</li>
-          <!-- Optionally, you can add icons to the links -->
-          <li>
-            <a href="../../contenido/principal/"><i class="fa fa-home"></i> <span>HOME</span></a>
-          </li>
-          <?php
-          if (!empty($categorias)) {
+            <li class="header">MENU PRINCIPAL</li>
+            <!-- Optionally, you can add icons to the links -->
+            <li>
+                <a href="../../contenido/principal/"><i class="fa fa-home"></i> <span>HOME</span></a>
+            </li>
+            <?php
+            if (!empty($categorias)) {
             foreach ($categorias as $cat) { ?>
               <?php if (!empty($cat->getSubCategorias())) { ?>
                 <li>

@@ -12,6 +12,7 @@
 	include PROJECTPATH . DS .'app'. DS .'controllers'. DS .'formacion.php';
 	include PROJECTPATH . DS .'app'. DS .'controllers'. DS .'categorias.php';
 	include PROJECTPATH . DS .'app'. DS .'controllers'. DS .'proyectos.php';
+	include PROJECTPATH . DS .'app'. DS .'controllers'. DS .'metadata.php';
 
 	include PROJECTPATH . DS .'app'. DS .'models'. DS . 'DTO'. DS .'contenido.php';
 	include PROJECTPATH . DS .'app'. DS .'models'. DS . 'DTO'. DS .'documentos.php';
@@ -22,6 +23,7 @@
 	include PROJECTPATH . DS .'app'. DS .'models'. DS . 'DTO'. DS .'gestion_documento.php';
 	include PROJECTPATH . DS .'app'. DS .'models'. DS . 'DTO'. DS .'sub_categorias.php';
 	include PROJECTPATH . DS .'app'. DS .'models'. DS . 'DTO'. DS .'sub_categorias2.php';
+	include PROJECTPATH . DS .'app'. DS .'models'. DS . 'DTO'. DS .'metadata.php';
 	include PROJECTPATH . DS .'app'. DS .'models'. DS .'contenidoDAO.php';
 	include PROJECTPATH . DS .'app'. DS .'models'. DS .'documentoDAO.php';
 	include PROJECTPATH . DS .'app'. DS .'models'. DS .'categoriasDAO.php';
@@ -31,6 +33,7 @@
 	include PROJECTPATH . DS .'app'. DS .'models'. DS .'formacionDAO.php';
 	include PROJECTPATH . DS .'app'. DS .'models'. DS .'proyectosDAO.php';
 	include PROJECTPATH . DS .'app'. DS .'models'. DS .'gestion_documentoDAO.php';
+	include PROJECTPATH . DS .'app'. DS .'models'. DS .'metadataDAO.php';
 
 	include PROJECTPATH . DS .'core'. DS .'views.php';
 	include PROJECTPATH . DS .'core'. DS .'database.php';
@@ -104,7 +107,6 @@
 
     			 //aquí tenemos el método
             	$this->_method = $url[1];
-
     			// si existe un metodo procedemos a borrar la posicion correspondiente
     			if (method_exists($this->_controller, $this->_method)) {
 

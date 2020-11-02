@@ -146,6 +146,6 @@
 	  </div>
 	</div>
 	<!-- BTN floating modal -->
-	<button class="btn btn-danger btn-fixed" data-toggle="modal" data-target="#myModalArchivos"><i class="fa fa-upload"></i></button>
+	<button class="btn btn-danger btn-fixed" data-toggle="modal" data-target="#myModalArchivos"><i class="fa fa-plus"></i></button>
 	
 <?php include VIEWSPATH . DS .'admin'. DS .'includes'. DS .'section-footer.php'; ?>
