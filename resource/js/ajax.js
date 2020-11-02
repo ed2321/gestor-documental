@@ -550,7 +550,6 @@ $(document).ready(function () {
 					}
 			});
 		}
-		
 	});
 
 	/*
@@ -563,6 +562,46 @@ $(document).ready(function () {
 		$("#btn-load-cat").data("id_doc_cap", id);
 		$('#myModalDocCategori').modal('show');
 	});
+	
+	/*
+	*  Evento sobre el formulario de guardar y actualizar categorias que envia la informacion al servidor
+	*/
+	$("#btn-load-doc-meta").on("click", function() {
+		var id_doc_meta = $(this).data("id_doc_meta");
+		var name_meta = $("#name_meta").val();
+		if (!id_doc_meta) {
+			$.post('../../metadata/insert_documentos_categorias/', {name_meta:name_meta}, function(response){
+				var res = JSON.parse(response);
+					if (res.ok) {
+						location.reload(true);
+					}
+					else {
+						$.jGrowl(res.error, {
+							position: "bottom-right",
+							header: "Ocurrio un problema",
+							theme: "bg-red",
+							life: 5000
+						});
+					}
+			});
+		} else {
+			$.post('../../metadata/update_documentos_categorias/', {id_doc_meta:id_doc_meta,name_meta:name_meta}, function(response){
+				var res = JSON.parse(response);
+					if (res.ok) {
+						location.reload(true);
+					}
+					else {
+						$.jGrowl(res.error, {
+							position: "bottom-right",
+							header: "Ocurrio un problema",
+							theme: "bg-red",
+							life: 5000
+						});
+					}
+			});
+		}
+	});
+
 	
 
 

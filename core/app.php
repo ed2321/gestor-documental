@@ -13,6 +13,7 @@
 	include PROJECTPATH . DS .'app'. DS .'controllers'. DS .'categorias.php';
 	include PROJECTPATH . DS .'app'. DS .'controllers'. DS .'proyectos.php';
 	include PROJECTPATH . DS .'app'. DS .'controllers'. DS .'metadata.php';
+	include PROJECTPATH . DS .'app'. DS .'controllers'. DS .'documentosMetadata.php';
 
 	include PROJECTPATH . DS .'app'. DS .'models'. DS . 'DTO'. DS .'contenido.php';
 	include PROJECTPATH . DS .'app'. DS .'models'. DS . 'DTO'. DS .'documentos.php';
@@ -24,6 +25,7 @@
 	include PROJECTPATH . DS .'app'. DS .'models'. DS . 'DTO'. DS .'sub_categorias.php';
 	include PROJECTPATH . DS .'app'. DS .'models'. DS . 'DTO'. DS .'sub_categorias2.php';
 	include PROJECTPATH . DS .'app'. DS .'models'. DS . 'DTO'. DS .'metadata.php';
+	include PROJECTPATH . DS .'app'. DS .'models'. DS . 'DTO'. DS .'documentosMetadata.php';
 	include PROJECTPATH . DS .'app'. DS .'models'. DS .'contenidoDAO.php';
 	include PROJECTPATH . DS .'app'. DS .'models'. DS .'documentoDAO.php';
 	include PROJECTPATH . DS .'app'. DS .'models'. DS .'categoriasDAO.php';
@@ -34,6 +36,7 @@
 	include PROJECTPATH . DS .'app'. DS .'models'. DS .'proyectosDAO.php';
 	include PROJECTPATH . DS .'app'. DS .'models'. DS .'gestion_documentoDAO.php';
 	include PROJECTPATH . DS .'app'. DS .'models'. DS .'metadataDAO.php';
+	include PROJECTPATH . DS .'app'. DS .'models'. DS .'documentosMetadataDAO.php';
 
 	include PROJECTPATH . DS .'core'. DS .'views.php';
 	include PROJECTPATH . DS .'core'. DS .'database.php';

@@ -174,7 +174,7 @@
                 </a>
               </li>
               <li>
-                <a href="../../contenido/equipo_de_trabajo/4"><i class="fa fa-circle-o text-red"></i> <span>lista de metadata</span>
+                <a href="../../control/documentosMetadata/"><i class="fa fa-circle-o text-red"></i> <span>lista de metadata</span>
                 </a>
               </li>
               <li>

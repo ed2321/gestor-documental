@@ -19,6 +19,9 @@
 	RewriteRule ^control/metadata/(\w+)? index.php?url=metadata/$1
 	RewriteRule ^metadata/(\w+)? index.php?url=metadata/$1
 
+	RewriteRule ^control/documentosMetadata/(\w+)? index.php?url=documentosMetadata/$1
+	RewriteRule ^documentosMetadata/(\w+)? index.php?url=documentosMetadata/$1
+
 	RewriteRule ^view/(\w+)/(\w+)? index.php?url=usuarios/secciones/$1/$2
 	RewriteRule ^docentes/(\w+)/? index.php?url=usuarios/$1
 
