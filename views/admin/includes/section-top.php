@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -26,6 +27,7 @@
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
   <![endif]-->
 </head>
+
 <body class="hold-transition skin-red-light fixed">
   <div class="wrapper">
     <!-- Main Header -->
@@ -44,33 +46,33 @@
         </a>
         <!-- Navbar Right Menu -->
         <div class="navbar-custom-menu">
-            <ul class="nav navbar-nav">
-                <!-- User Account Menu -->
-                <li class="dropdown user user-menu">
-                  <!-- Menu Toggle Button -->
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                    <!-- The user image in the navbar-->
-                    <img src="../../resource/img/avatar5.png" class="user-image" alt="User Image">
-                    <!-- hidden-xs hides the username on small devices so only the image appears. -->
-                    <span class="hidden-xs" style="text-transform: capitalize;"><?php print($_SESSION['admin']['nombre']) ?> </span>
-                  </a>
-                  <ul class="dropdown-menu">
-                    <!-- The user image in the menu -->
-                    <li class="user-header">
-                      <img src="../../resource/img/avatar5.png" class="img-circle" alt="User Image">
+          <ul class="nav navbar-nav">
+            <!-- User Account Menu -->
+            <li class="dropdown user user-menu">
+              <!-- Menu Toggle Button -->
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                <!-- The user image in the navbar-->
+                <img src="../../resource/img/avatar5.png" class="user-image" alt="User Image">
+                <!-- hidden-xs hides the username on small devices so only the image appears. -->
+                <span class="hidden-xs" style="text-transform: capitalize;"><?php print($_SESSION['admin']['nombre']) ?> </span>
+              </a>
+              <ul class="dropdown-menu">
+                <!-- The user image in the menu -->
+                <li class="user-header">
+                  <img src="../../resource/img/avatar5.png" class="img-circle" alt="User Image">
 
-                      <p style="text-transform: capitalize;">
-                        <?php print($_SESSION['admin']['nombre']) ?>
-                        <small>Administrador</small>
-                      </p>
-                    </li>
-                    <!-- Menu Footer-->
-                    <li class="user-footer">
-                      <div class="pull-right">
-                        <a href="../../panel-admin/close/" class="btn btn-default btn-flat">Cerrar Sesion</a>
-                      </div>
-                    </li>
-                </ul>
+                  <p style="text-transform: capitalize;">
+                    <?php print($_SESSION['admin']['nombre']) ?>
+                    <small>Administrador</small>
+                  </p>
+                </li>
+                <!-- Menu Footer-->
+                <li class="user-footer">
+                  <div class="pull-right">
+                    <a href="../../panel-admin/close/" class="btn btn-default btn-flat">Cerrar Sesion</a>
+                  </div>
+                </li>
+              </ul>
             </li>
           </ul>
         </div>
@@ -82,81 +84,115 @@
       <section class="sidebar">
         <!-- Sidebar user panel (optional) -->
         <div class="user-panel">
-            <div class="pull-left image">
-                <img src="../../resource/img/avatar5.png" class="img-circle" alt="User Image">
-            </div>
-            <div class="pull-left info">
-                <p style="text-transform: capitalize;"><?php print($_SESSION['admin']['nombre']) ?></p>
-                <!-- Status -->
-                <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
-            </div>
+          <div class="pull-left image">
+            <img src="../../resource/img/avatar5.png" class="img-circle" alt="User Image">
+          </div>
+          <div class="pull-left info">
+            <p style="text-transform: capitalize;"><?php print($_SESSION['admin']['nombre']) ?></p>
+            <!-- Status -->
+            <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+          </div>
         </div>
         <!-- Sidebar Menu -->
         <ul class="sidebar-menu">
-            <li class="header">MENU PRINCIPAL</li>
-            <!-- Optionally, you can add icons to the links -->
-            <li>
-                <a href="../../contenido/principal/"><i class="fa fa-home"></i> <span>HOME</span></a>
-            </li>
-            <?php
+          <li class="header">MENU PRINCIPAL</li>
+          <!-- Optionally, you can add icons to the links -->
+          <li>
+            <a href="../../contenido/principal/"><i class="fa fa-home"></i> <span>HOME</span></a>
+          </li>
+          <?php
+          if (!empty($categorias)) {
             foreach ($categorias as $cat) { ?>
-               <?php if (!empty($cat->getSubCategorias())) {?>
-               <li>
+              <?php if (!empty($cat->getSubCategorias())) { ?>
+                <li>
                   <a href="#" style="text-transform: uppercase;">
-                     <i class="fa fa-file"></i> <span><?php print($cat->getNombre()); ?></span>
-                     <?php if (!empty($cat->getSubCategorias())) {?>
-                         <span class="pull-right-container">
-                             <i class="fa fa-angle-left pull-right"></i>
-                         </span>
-                     <?php } ?>
+                    <i class="fa fa-file"></i> <span><?php print($cat->getNombre()); ?></span>
+                    <?php if (!empty($cat->getSubCategorias())) { ?>
+                      <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                      </span>
+                    <?php } ?>
                   </a>
                   <?php $array = $cat->getSubCategorias(); ?>
                   <ul class="treeview-menu">
-                  <?php foreach ($array as $val) {  
-                     $sub = $val->getSubCategorias(); ?>
-                     <li>                        
+                    <?php foreach ($array as $val) {
+                      $sub = $val->getSubCategorias(); ?>
+                      <li>
                         <?php if ($val->getId() == 7) { ?>
-                           <a href="../../actores/<?php print(str_replace(" ", "_", strtolower($val->getNombre())) . '/' . $val->getId()); ?>"><i class="fa fa-circle-o text-red"></i> <span><?php print($val->getNombre()); ?></span>
-                              <?php if (!empty($sub)) {?>
-                                 <span class="pull-right-container">
-                                    <i class="fa fa-angle-left pull-right"></i>
-                                 </span>
-                              <?php } ?>
-                           </a>
+                          <a href="../../actores/<?php print(str_replace(" ", "_", strtolower($val->getNombre())) . '/' . $val->getId()); ?>"><i class="fa fa-circle-o text-red"></i> <span><?php print($val->getNombre()); ?></span>
+                            <?php if (!empty($sub)) { ?>
+                              <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                              </span>
+                            <?php } ?>
+                          </a>
                         <?php } else { ?>
-                           <a href="../../contenido/<?php print(str_replace(" ", "_", strtolower($val->getNombre())) . '/' . $val->getId()); ?>"><i class="fa fa-circle-o text-red"></i> <span><?php print($val->getNombre()); ?></span>
-                              <?php if (!empty($sub)) {?>
-                                 <span class="pull-right-container">
-                                    <i class="fa fa-angle-left pull-right"></i>
-                                 </span>
-                              <?php } ?>
-                           </a>                           
-                       <?php }                         
+                          <a href="../../contenido/<?php print(str_replace(" ", "_", strtolower($val->getNombre())) . '/' . $val->getId()); ?>"><i class="fa fa-circle-o text-red"></i> <span><?php print($val->getNombre()); ?></span>
+                            <?php if (!empty($sub)) { ?>
+                              <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                              </span>
+                            <?php } ?>
+                          </a>
+                        <?php }
                         if (!empty($sub)) { ?>
-                        <ul class="treeview-menu">
-                           <?php foreach ($sub as $sb) {?>
+                          <ul class="treeview-menu">
+                            <?php foreach ($sub as $sb) { ?>
                               <li>
-                                 <a href="../../contenido/<?php print(str_replace(" ", "_", strtolower($sb->getNombre())) . '/' . $sb->getId()); ?>"><i class="fa fa-circle-o text-red"></i> <span><?php print($sb->getNombre()); ?></span></a>
+                                <a href="../../contenido/<?php print(str_replace(" ", "_", strtolower($sb->getNombre())) . '/' . $sb->getId()); ?>"><i class="fa fa-circle-o text-red"></i> <span><?php print($sb->getNombre()); ?></span></a>
                               </li>
-                           <?php } ?>
-                        </ul>
+                            <?php } ?>
+                          </ul>
                         <?php } ?>
-                     </li>
-                  <?php } ?>
+                      </li>
+                    <?php } ?>
                   </ul>
-               </li>
-               <?php } ?>
+                </li>
+              <?php } ?>
             <?php } ?>
-            <li>
-                <a href="../../control/documentos/" style="text-transform: uppercase;">
-                    <i class="fa fa-file"></i> <span>Control de Documento</span>
+          <?php } ?>
+          <li>
+            <a href="../../control/documentos/" style="text-transform: uppercase;">
+              <i class="fa fa-file"></i> <span>listado de documentos</span>
+            </a>
+          </li>
+          <li>
+            <a href="../../control/documentos/" style="text-transform: uppercase;">
+              <i class="fa fa-file"></i> <span>gestion de documentos</span>
+            </a>
+          </li>
+          <li>
+            <a href="#" style="text-transform: uppercase;">
+              <i class="fa fa-file"></i> <span>gestion de metadata</span>
+              <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+              </span>
+            </a>
+            <ul class="treeview-menu" >
+              <li>
+                <a href="../../control/metadata/"><i class="fa fa-circle-o text-red"></i> <span>lista de categorias</span>
                 </a>
-            </li>
-            <li>
-                <a href="../../categorias/show/" style="text-transform: uppercase;">
-                    <i class="fa fa-edit"></i> <span>agregar categoria</span>
+              </li>
+              <li>
+                <a href="../../contenido/equipo_de_trabajo/4"><i class="fa fa-circle-o text-red"></i> <span>lista de metadata</span>
                 </a>
-            </li>
+              </li>
+              <li>
+                <a href="../../contenido/equipo_de_trabajo/4"><i class="fa fa-circle-o text-red"></i> <span>lista de metadata....</span>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <a href="../../control/documentos/" style="text-transform: uppercase;">
+              <i class="fa fa-file"></i> <span>gestion de usuarios</span>
+            </a>
+          </li>
+          <li>
+            <a href="../../categorias/show/" style="text-transform: uppercase;">
+              <i class="fa fa-edit"></i> <span>agregar categoria</span>
+            </a>
+          </li>
         </ul>
         <!-- /.sidebar-menu -->
       </section>
@@ -164,4 +200,4 @@
     </aside>
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
-        <!-- Content Header (Page header) -->
+      <!-- Content Header (Page header) -->
