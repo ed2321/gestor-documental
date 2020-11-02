@@ -514,7 +514,7 @@ $(document).ready(function () {
 	});
 
 	/*
-	*  Evento sobre el formulario de guardar categorias que envia la informacion al servidor
+	*  Evento sobre el formulario de guardar y actualizar categorias que envia la informacion al servidor
 	*/
 	$("#btn-load-cat").on("click", function() {
 		var id_doc_cap = $(this).data("id_doc_cap");
@@ -553,6 +553,9 @@ $(document).ready(function () {
 		
 	});
 
+	/*
+	*  Evento que abre la modal para la actualizacion de categorias de metadata.
+	*/
 	$("body").on("click", ".btn-update-doc-cat", function(){
 		var id = $(this).data("id");
 		var nombreCategori = $(this).data("name");
