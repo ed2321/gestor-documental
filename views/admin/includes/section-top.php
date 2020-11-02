@@ -184,7 +184,7 @@
             </ul>
           </li>
           <li>
-            <a href="../../control/documentos/" style="text-transform: uppercase;">
+            <a href="../../control/gestionUsuarios/" style="text-transform: uppercase;">
               <i class="fa fa-file"></i> <span>gestion de usuarios</span>
             </a>
           </li>
