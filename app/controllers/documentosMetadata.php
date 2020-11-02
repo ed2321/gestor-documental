@@ -24,7 +24,7 @@
 		 * @return obj JSON con informacion de la transaccion
 		 */
 		function delete_documentos_metadata() {
-			$id = htmlspecialchars($_POST['id_doc_cat']);
+			$id = htmlspecialchars($_POST['id_doc_meta']);
 			$json;
 			if (!empty($id)) {
 				$res = documentosMetadataDAO::delete_documentos_metadata($id);

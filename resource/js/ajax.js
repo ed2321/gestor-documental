@@ -613,6 +613,28 @@ $(document).ready(function () {
 		$('#myModalDocCategori').modal('show');
 	});
 
+	 /*
+	 * Evento que se dispara cuando se desea eliminar un documento de metadata
+	 */
+	$("body").on("click", ".btn-delete-doc-meta", function(){
+		var id_doc_meta = $(this).data("id");
+
+		$.post('../../documentosMetadata/delete_documentos_metadata/', {id_doc_meta:id_doc_meta}, function(response){
+			var res = JSON.parse(response);
+				if (res.ok) {
+					location.reload(true);
+				}
+				else {
+					$.jGrowl(res.error, {
+						position: "bottom-right",
+						header: "Ocurrio un problema",
+						theme: "bg-red",
+						life: 5000
+					});
+				}
+		});
+	});
+
 	
 
 

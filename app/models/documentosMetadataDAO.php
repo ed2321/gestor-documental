@@ -40,12 +40,12 @@
 			}
 		}
 
-		public static function delete_documentos_categorias($id_doc_cat) {
+		public static function delete_documentos_metadata($id_doc_meta) {
 			try {
 				$conn = DB::instance();
-				$query = "DELETE FROM documentos_categorias WHERE id_doc_cat = ?";
+				$query = "DELETE FROM documentos_metadata WHERE id_doc_meta = ?";
 				$res = $conn->prepare($query);
-				$res->bindParam(1, $id_doc_cat, \PDO::PARAM_INT);
+				$res->bindParam(1, $id_doc_meta, \PDO::PARAM_INT);
 				$res->execute();
 				$conn->close();
 				return ['ok' => true];
