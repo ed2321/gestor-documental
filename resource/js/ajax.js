@@ -564,7 +564,7 @@ $(document).ready(function () {
 	});
 	
 	/*
-	*  Evento sobre el formulario de guardar y actualizar categorias que envia la informacion al servidor
+	*  Evento sobre el formulario de guardar y actualizar documentos de metadata que envia la informacion al servidor
 	*/
 	$("#btn-load-doc-meta").on("click", function() {
 		var id_doc_meta = $(this).data("id_doc_meta");
@@ -585,7 +585,7 @@ $(document).ready(function () {
 					}
 			});
 		} else {
-			$.post('../../metadata/update_documentos_categorias/', {id_doc_meta:id_doc_meta,name_meta:name_meta}, function(response){
+			$.post('../../documentosMetadata/update_documentos_metadata/', {id_doc_meta:id_doc_meta,name_meta:name_meta}, function(response){
 				var res = JSON.parse(response);
 					if (res.ok) {
 						location.reload(true);
@@ -600,6 +600,17 @@ $(document).ready(function () {
 					}
 			});
 		}
+	});
+
+	/*
+	*  Evento que abre la modal para la actualizacion de documentos de metadata.
+	*/
+	$("body").on("click", ".btn-update-doc-meta", function(){
+		var id = $(this).data("id");
+		var nombreDocMeta = $(this).data("name");
+		$("#name_meta").val(nombreDocMeta);
+		$("#btn-load-doc-meta").data("id_doc_meta", id);
+		$('#myModalDocCategori').modal('show');
 	});
 
 	

@@ -54,13 +54,13 @@
 			}
 		}
 
-		public static function update_documentos_categorias($id_doc_cat,$nombre_categoria) {
+		public static function update_documentos_metadata($id_doc_meta,$name_meta) {
 			try {
 				$conn = DB::instance();
-				$query = "UPDATE documentos_categorias SET nombre_categoria = ? WHERE id_doc_cat = ?";
+				$query = "UPDATE documentos_metadata SET name_meta = ? WHERE id_doc_meta = ?";
 				$res = $conn->prepare($query);
-				$res->bindParam(1, $nombre_categoria,\PDO::PARAM_STR);
-				$res->bindParam(2, $id_doc_cat, \PDO::PARAM_INT);
+				$res->bindParam(1, $name_meta,\PDO::PARAM_STR);
+				$res->bindParam(2, $id_doc_meta, \PDO::PARAM_INT);
 				$res->execute();
 				$conn->close();
 				return ['ok' => true];

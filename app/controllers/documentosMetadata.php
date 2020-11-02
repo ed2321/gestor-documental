@@ -23,11 +23,11 @@
 		 * Metodo que borra un documento de la DB y del servidor
 		 * @return obj JSON con informacion de la transaccion
 		 */
-		function delete_documentos_categorias() {
+		function delete_documentos_metadata() {
 			$id = htmlspecialchars($_POST['id_doc_cat']);
 			$json;
 			if (!empty($id)) {
-				$res = documentosMetadataDAO::delete_documentos_categorias($id);
+				$res = documentosMetadataDAO::delete_documentos_metadata($id);
 				$json = $res;
 				
 			} else {
@@ -56,12 +56,12 @@
 		 * Metodo que actualiza un documento de la DB y del servidor
 		 * @return obj JSON con informacion de la transaccion
 		 */
-		function update_documentos_categorias() {
-			$id = htmlspecialchars($_POST['id_doc_cat']);
+		function update_documentos_metadata() {
+			$id = htmlspecialchars($_POST['id_doc_meta']);
 			$nombre = htmlspecialchars($_POST['name_meta']);
 			$json;
 			if (!empty($id) && !empty($nombre)) {
-				$res = documentosMetadataDAO::update_documentos_categorias($id,$nombre);
+				$res = documentosMetadataDAO::update_documentos_metadata($id,$nombre);
 				$json = $res;
 				
 			} else {

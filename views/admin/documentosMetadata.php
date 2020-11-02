@@ -32,10 +32,10 @@
 		                		print('<tr>
 				                  <td>'.$met_data['name_meta'].'</td>
 				                  <td style="text-align: center;">
-				                  	<button data-id="'.$met_data['id_doc_meta'].'" data-name="'.$met_data['name_meta'].'" class="btn btn-danger btn-sm btn-update-doc-cat"><i class="fa fa-pencil"></i></button>
+				                  	<button data-id="'.$met_data['id_doc_meta'].'" data-name="'.$met_data['name_meta'].'" class="btn btn-danger btn-sm btn-update-doc-meta"><i class="fa fa-pencil"></i></button>
 				                  </td>
 				                  <td style="text-align: center;">
-				                  	<button data-id="'.$met_data['id_doc_meta'].'" data-name="'.$met_data['name_meta'].'" class="btn btn-danger btn-sm btn-delete-doc-cat"><i class="fa fa-trash"></i></button>
+				                  	<button data-id="'.$met_data['id_doc_meta'].'" data-name="'.$met_data['name_meta'].'" class="btn btn-danger btn-sm btn-delete-doc-meta"><i class="fa fa-trash"></i></button>
 				                  </td>
 				                </tr>');
 				            }
