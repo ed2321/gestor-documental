@@ -2,7 +2,7 @@
 
 	namespace App\Models\DTO;
 
-	class documentosMetadataDAO {
+	class documentosMetadata {
 		
 		
 		private $_id_doc_meta;

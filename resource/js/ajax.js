@@ -570,7 +570,7 @@ $(document).ready(function () {
 		var id_doc_meta = $(this).data("id_doc_meta");
 		var name_meta = $("#name_meta").val();
 		if (!id_doc_meta) {
-			$.post('../../metadata/insert_documentos_categorias/', {name_meta:name_meta}, function(response){
+			$.post('../../documentosMetadata/insert_documentos_metadata/', {name_meta:name_meta}, function(response){
 				var res = JSON.parse(response);
 					if (res.ok) {
 						location.reload(true);
