@@ -69,7 +69,7 @@
 			}
 			print(json_encode($json));
 		}
-		
+			
 	}
 
 ?>
