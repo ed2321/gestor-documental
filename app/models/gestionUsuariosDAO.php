@@ -4,12 +4,12 @@
 
 	use \Core\Database as DB;
 
-	class documentosMetadataDAO {
+	class gestionUsuariosDAO {
 
-		public static function insert_documentos_metadata($obj) {
+		public static function insert_user($obj) {
 			try {
 				$conn = DB::instance();
-				$query = "INSERT INTO documentos_metadata(name_meta) VALUES(?)";
+				$query = "INSERT INTO administradores(name_meta) VALUES(?)";
 				$res = $conn->prepare($query);
 				$res->bindValue(1, $obj->get_name_meta(), \PDO::PARAM_STR);
 				$res->execute();
@@ -19,11 +19,12 @@
 				return ['ok' => true, 'error' => 'Error:! ' . $e->getMessage()];
 			}
 		}
-		public static function select_documentos_metadata() {
+		public static function select_user() {
 			try {
 				$result = [];
 				$conn = DB::instance();
-				$query = "SELECT * FROM documentos_metadata";
+				$query = "SELECT * FROM administradores a 
+				INNER JOIN roles r ON a.`id_rol` = r.`id_rol`";
 				$res = $conn->prepare($query);
 				$res->execute();
 				$conn->close();
@@ -35,15 +36,15 @@
 				}
 				return $result;
 			} catch (\PDOException $e) {
-				print($e-getMessage());
+				print($e->getMessage());
 				return null;
 			}
 		}
 
-		public static function delete_documentos_metadata($id_doc_meta) {
+		public static function delete_user($id_doc_meta) {
 			try {
 				$conn = DB::instance();
-				$query = "DELETE FROM documentos_metadata WHERE id_doc_meta = ?";
+				$query = "DELETE FROM administradores WHERE id_doc_meta = ?";
 				$res = $conn->prepare($query);
 				$res->bindParam(1, $id_doc_meta, \PDO::PARAM_INT);
 				$res->execute();
@@ -54,10 +55,10 @@
 			}
 		}
 
-		public static function update_documentos_metadata($id_doc_meta,$name_meta) {
+		public static function update_user($id_doc_meta,$name_meta) {
 			try {
 				$conn = DB::instance();
-				$query = "UPDATE documentos_metadata SET name_meta = ? WHERE id_doc_meta = ?";
+				$query = "UPDATE administradores SET name_meta = ? WHERE id_doc_meta = ?";
 				$res = $conn->prepare($query);
 				$res->bindParam(1, $name_meta,\PDO::PARAM_STR);
 				$res->bindParam(2, $id_doc_meta, \PDO::PARAM_INT);

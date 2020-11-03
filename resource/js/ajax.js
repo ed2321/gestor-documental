@@ -778,25 +778,141 @@ $(document).ready(function () {
 					  life: 5000,
 					});
 				  }
+				});
+			}
+		});
+	});
+
+	/*
+	*  Evento sobre el formulario de guardar y actualizar categorias que envia la informacion al servidor
+	*/
+	$("#btn-load-cat").on("click", function() {
+		var id_doc_cap = $(this).data("id_doc_cap");
+		var nombre_categoria = $("#nombre_categoria").val();
+		if (!id_doc_cap) {
+			$.post('../../metadata/insert_documentos_categorias/', {nombre_categoria:nombre_categoria}, function(response){
+				var res = JSON.parse(response);
+					if (res.ok) {
+						location.reload(true);
+					}
+					else {
+						$.jGrowl(res.error, {
+							position: "bottom-right",
+							header: "Ocurrio un problema",
+							theme: "bg-red",
+							life: 5000
+						});
+					}
+			});
+		} else {
+			$.post('../../metadata/update_documentos_categorias/', {id_doc_cat:id_doc_cap,nombre_categoria:nombre_categoria}, function(response){
+				var res = JSON.parse(response);
+					if (res.ok) {
+						location.reload(true);
+					}
+					else {
+						$.jGrowl(res.error, {
+							position: "bottom-right",
+							header: "Ocurrio un problema",
+							theme: "bg-red",
+							life: 5000
+						});
+					}
+			});
+		}
+	});
+
+	/*
+	*  Evento que abre la modal para la actualizacion de categorias de metadata.
+	*/
+	$("body").on("click", ".btn-update-doc-cat", function(){
+		var id = $(this).data("id");
+		var nombreCategori = $(this).data("name");
+		$("#nombre_categoria").val(nombreCategori);
+		$("#btn-load-cat").data("id_doc_cap", id);
+		$('#myModalDocCategori').modal('show');
+	});
+	
+	/*
+	*  Evento sobre el formulario de guardar y actualizar documentos de metadata que envia la informacion al servidor
+	*/
+	$("#btn-load-doc-meta").on("click", function() {
+		var id_doc_meta = $(this).data("id_doc_meta");
+		var name_meta = $("#name_meta").val();
+		if (!id_doc_meta) {
+			$.post('../../documentosMetadata/insert_documentos_metadata/', {name_meta:name_meta}, function(response){
+				var res = JSON.parse(response);
+					if (res.ok) {
+						location.reload(true);
+					}
+					else {
+						$.jGrowl(res.error, {
+							position: "bottom-right",
+							header: "Ocurrio un problema",
+							theme: "bg-red",
+							life: 5000
+						});
+					}
+			});
+		} else {
+			$.post('../../documentosMetadata/update_documentos_metadata/', {id_doc_meta:id_doc_meta,name_meta:name_meta}, function(response){
+				var res = JSON.parse(response);
+					if (res.ok) {
+						location.reload(true);
+					}
+					else {
+						$.jGrowl(res.error, {
+							position: "bottom-right",
+							header: "Ocurrio un problema",
+							theme: "bg-red",
+							life: 5000
+						});
+					}
+			});
+		}
+	});
+
+	/*
+	*  Evento que abre la modal para la actualizacion de documentos de metadata.
+	*/
+	$("body").on("click", ".btn-update-doc-meta", function(){
+		var id = $(this).data("id");
+		var nombreDocMeta = $(this).data("name");
+		$("#name_meta").val(nombreDocMeta);
+		$("#btn-load-doc-meta").data("id_doc_meta", id);
+		$('#myModalDocCategori').modal('show');
+	});
+
+	 /*
+	 * Evento que se dispara cuando se desea eliminar un documento de metadata
+	 */
+	$("body").on("click", ".btn-delete-doc-meta", function(){
+		var id_doc_meta = $(this).data("id");
+
+		$.post('../../documentosMetadata/delete_documentos_metadata/', {id_doc_meta:id_doc_meta}, function(response){
+			var res = JSON.parse(response);
+				if (res.ok) {
+					location.reload(true);
 				}
-			  );
-        } else {
-          $.jGrowl(res.error, {
-            position: "bottom-right",
-            header: "Ocurrio un problema",
-            theme: "bg-red",
-            life: 5000,
-          });
-        }
-      }
-    );
-  });
+				else {
+					$.jGrowl(res.error, {
+						position: "bottom-right",
+						header: "Ocurrio un problema",
+						theme: "bg-red",
+						life: 5000
+					});
+				}
+		});
+	});
 
-  $("body").on("mouseenter", ".treeview-menu.menu-open li", function (e) {
-    $(this).addClass("active");
-  });
+	
 
-  $("body").on("mouseleave", ".treeview-menu.menu-open li", function (e) {
-    $(this).removeClass("active");
-  });
+
+  	$("body").on("mouseenter", ".treeview-menu.menu-open li", function(e) {
+  		$(this).addClass("active");
+  	});
+
+  	$("body").on("mouseleave", ".treeview-menu.menu-open li", function(e) {
+  		$(this).removeClass("active");
+  	});
 });

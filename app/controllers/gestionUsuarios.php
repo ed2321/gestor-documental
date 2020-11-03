@@ -3,20 +3,20 @@
 	namespace App\Controller;
 
 	use \Core\View;
-	use \App\Models\documentosMetadataDAO as documentosMetadataDAO;
-	use \App\Models\DTO\documentosMetadata as documentosMetadataDTO;
+	use \App\Models\gestionUsuariosDAO as gestionUsuariosDAO;
+	use \App\Models\DTO\gestionUsuarios as gestionUsuariosDTO;
 
 
 
 	/**
 	*  Clase controladora que gestiona la administración de los documentos cargados en el sistema
 	*/
-	class documentosMetadata {
+	class gestionUsuarios {
 		
 		function index() {
-			$metadata = documentosMetadataDAO::select_documentos_metadata();
-			View::set("list_documentos_metadata", $metadata);
-			View::render("admin". DS . "documentosMetadata");
+			$metadata = gestionUsuariosDAO::select_user();
+			View::set("list_user", $metadata);
+			View::render("admin". DS . "gestionUsuarios");
 		}
 
 		/**
@@ -27,7 +27,7 @@
 			$id = htmlspecialchars($_POST['id_doc_meta']);
 			$json = null;
 			if (!empty($id)) {
-				$res = documentosMetadataDAO::delete_documentos_metadata($id);
+				$res = gestionUsuariosDAO::delete_documentos_metadata($id);
 				$json = $res;
 				
 			} else {
@@ -43,8 +43,8 @@
 			$name_meta = htmlspecialchars($_POST['name_meta']);
 			$json = null;
 			if (!empty($name_meta)) {
-				$data = new documentosMetadataDTO($name_meta);
-				$res = documentosMetadataDAO::insert_documentos_metadata($data);
+				$data = new gestionUsuariosDTO($name_meta);
+				$res = gestionUsuariosDAO::insert_documentos_metadata($data);
 				$json = $res;
 				
 			} else {
@@ -61,7 +61,7 @@
 			$nombre = htmlspecialchars($_POST['name_meta']);
 			$json = null;
 			if (!empty($id) && !empty($nombre)) {
-				$res = documentosMetadataDAO::update_documentos_metadata($id,$nombre);
+				$res = gestionUsuariosDAO::update_documentos_metadata($id,$nombre);
 				$json = $res;
 				
 			} else {
@@ -69,7 +69,7 @@
 			}
 			print(json_encode($json));
 		}
-			
+		
 	}
 
 ?>

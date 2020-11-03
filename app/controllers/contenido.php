@@ -164,7 +164,7 @@
 						exit();
 					}
 				}
-				$cont = new ContDTO($cat, $name, $desc_img, $text, $_SESSION['admin']['ID']);
+				$cont = new ContDTO($cat, $name, $desc_img, $text, $_SESSION['admin']['id']);
 				if ($trs == 'register') {
 					$response = ContDAO::insert($cont);
 					print(json_encode($response));
