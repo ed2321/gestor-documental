@@ -1,0 +1,11 @@
+{
+    "gitlens.remotes": [],
+    "gitlens.views.repositories.showBranchComparison": null,
+    "intelephense.phpdoc.classTemplate": {
+    
+        "summary": "$1",
+        "tags": [
+            "@package ${1:$SYMBOL_NAMESPACE}"
+        ]
+    }
+}
