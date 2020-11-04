@@ -69,6 +69,62 @@
 			}
 			print(json_encode($json));
 		}
+
+		/**
+		 * Metodo que trae las lista de la metadata que hay en el sistema
+		 * @return obj JSON con informacion de la transaccion
+		 */
+		function get_metatada_of_categorie() {
+			$id = htmlspecialchars($_POST['id_doc_cat']);
+			$json;
+			if (!empty($id)) {
+				$json = [
+					"data_select" => MetadataDAO::list_metadata_not_used($id),
+					"data_asign" => MetadataDAO::list_metadata_used_doct($id)
+				];
+			} else {
+				$json = [
+					"data_select" => [],
+					"data_asign" => []
+				];
+			}
+			print(json_encode($json));
+
+		}
+		/**
+		 * Metodo que trae las lista de la metadata que hay en el sistema
+		 * @return obj JSON con informacion de la transaccion
+		 */
+		function add_metatada_of_categorie() {
+			$id = htmlspecialchars($_POST['id_doc_cat']);
+			$id_meta = htmlspecialchars($_POST['id_doc_meta']);
+			$json;
+			if (!empty($id) && !empty($id_meta)) {
+				$res = MetadataDAO::add_metatada_of_categorie($id,$id_meta);
+				$json = $res;
+				
+			} else {
+				$json = ['ok' => false, 'error' => 'Faltan datos'];
+			}
+			print(json_encode($json));
+			
+		}
+		/**
+		 * Metodo que borra un metadata de una categoria de documentos
+		 * @return obj JSON con informacion de la transaccion
+		 */
+		function delete_documentos_categorias_metadata() {
+			$id = htmlspecialchars($_POST['id_doc_cat_meta']);
+			$json;
+			if (!empty($id)) {
+				$res = MetadataDAO::delete_documentos_categorias_metadata($id);
+				$json = $res;
+				
+			} else {
+				$json = ['ok' => false, 'error' => 'Faltan datos'];
+			}
+			print(json_encode($json));
+		}
 		
 	}
 
