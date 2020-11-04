@@ -26,11 +26,9 @@ $(document).ready(function () {
       processData: false,
       success: function (res) {
         var response = JSON.parse(res);
-        console.log(response);
         if (response.ok) {
           location.reload(true);
         } else {
-          console.log("No se ha subido la imagen: " + response.error);
           $.jGrowl(response.error, {
             position: "bottom-right",
             header: "Fallo del Registro",
@@ -63,7 +61,6 @@ $(document).ready(function () {
       processData: false,
       contentType: false,
       success: function (response) {
-        console.log(response);
         var res = JSON.parse(response);
         if (res.ok) {
           location.reload(true);
@@ -94,7 +91,6 @@ $(document).ready(function () {
         doc: doc,
       },
       success: function (response) {
-        console.log(response);
         var res = JSON.parse(response);
         if (res.ok) {
           location.reload(true);
@@ -117,7 +113,6 @@ $(document).ready(function () {
     e.preventDefault();
     var id = $(this).data("id");
     $.get("../../personal/delete/" + id, function (response) {
-      console.log(response);
       var res = JSON.parse(response);
       if (res.ok) {
         //document.getElementById("person-"+id).remove();
@@ -147,7 +142,6 @@ $(document).ready(function () {
       processData: false,
       contentType: false,
       success: function (response) {
-        console.log(response);
         var res = JSON.parse(response);
         if (res.ok) {
           location.reload(true);
@@ -173,7 +167,6 @@ $(document).ready(function () {
       document.getElementById("action").value == "register"
         ? "register"
         : "update";
-    console.log(action);
     $.ajax({
       url: "../../estudios/" + action,
       type: "post",
@@ -181,7 +174,6 @@ $(document).ready(function () {
       contentType: false,
       processData: false,
       success: function (response) {
-        console.log(response);
         var res = JSON.parse(response);
         if (res.ok) {
           location.reload(true);
@@ -206,7 +198,6 @@ $(document).ready(function () {
       document.getElementById("action2").value == "register"
         ? "register"
         : "update";
-    console.log(action);
     $.ajax({
       url: "../../proyecto/" + action,
       type: "post",
@@ -214,7 +205,6 @@ $(document).ready(function () {
       contentType: false,
       processData: false,
       success: function (response) {
-        console.log(response);
         var res = JSON.parse(response);
         if (res.ok) {
           location.reload(true);
@@ -445,7 +435,6 @@ $(document).ready(function () {
     var id2 = button.data("supercat");
     $("#subcategoria-id").val(id);
     $("#supercategoria-id").val(id2);
-    console.log("dsd" + id + id2);
   });
 
   /*
@@ -462,7 +451,6 @@ $(document).ready(function () {
       contentType: false,
       processData: false,
       success: function (response) {
-        console.log(response);
         var res = JSON.parse(response);
         if (res.ok) {
           location.reload(true);
@@ -648,14 +636,12 @@ $(document).ready(function () {
 				  if (res.data_select) {
 					$("#id_doc_meta").empty();
 					$.each(res.data_select, function (index, element) {
-					  console.log(element);
 					  $("#id_doc_meta").append(
 						`<option value="${element.id_doc_meta}"> ${element.name_meta} </option>`
 					  );
 					});
 					$("#list_doc_metadata_asing > tbody").empty();
 					$.each(res.data_asign, function (index, element) {
-					  console.log(element);
 					  $("#list_doc_metadata_asing > tbody:last-child").append(`<tr>
 					  <td>${element.name_meta}</td>
 					  <td><button data-id_doc_cat_meta="${element.id_doc_cat_meta}"  class="btn btn-info btn-sm btn-delete-doc-cat_metadata"><i class="fa fa-trash"></i></button></td>
@@ -709,14 +695,12 @@ $(document).ready(function () {
         if (res.data_select) {
           $("#id_doc_meta").empty();
           $.each(res.data_select, function (index, element) {
-            console.log(element);
             $("#id_doc_meta").append(
               `<option value="${element.id_doc_meta}"> ${element.name_meta} </option>`
             );
           });
           $("#list_doc_metadata_asing > tbody").empty();
           $.each(res.data_asign, function (index, element) {
-            console.log(element);
             $("#list_doc_metadata_asing > tbody:last-child").append(`<tr>
 			<td>${element.name_meta}</td>
 			<td><button data-id_doc_cat_meta="${element.id_doc_cat_meta}"  class="btn btn-info btn-sm btn-delete-doc-cat_metadata"><i class="fa fa-trash"></i></button></td>
@@ -757,14 +741,12 @@ $(document).ready(function () {
 				  if (res.data_select) {
 					$("#id_doc_meta").empty();
 					$.each(res.data_select, function (index, element) {
-					  console.log(element);
 					  $("#id_doc_meta").append(
 						`<option value="${element.id_doc_meta}"> ${element.name_meta} </option>`
 					  );
 					});
 					$("#list_doc_metadata_asing > tbody").empty();
 					$.each(res.data_asign, function (index, element) {
-					  console.log(element);
 					  $("#list_doc_metadata_asing > tbody:last-child").append(`<tr>
 					  <td>${element.name_meta}</td>
 					  <td><button data-id_doc_cat_meta="${element.id_doc_cat_meta}"  class="btn btn-info btn-sm btn-delete-doc-cat_metadata"><i class="fa fa-trash"></i></button></td>
