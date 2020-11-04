@@ -21,9 +21,10 @@
 					<table id="list_doc_cat" class="display table table-bordered table-striped dataTable" cellspacing="0" width="100%">
 		                <thead>
 		                	<tr>
-			                  <th>nombre</th>
-			                  <th>email</th>
-			                  <th>id_rol</th>
+			                  <th>Nombre</th>
+			                  <th>Correo</th>
+			                  <th>Telefono</th>
+			                  <th>Nombre_Perfil</th>
 			                  <th style="width: 90px">Update</th>
 			                  <th style="width: 100px">Delete</th>
 		                	</tr>
@@ -34,12 +35,13 @@
 		                		print('<tr>
 				                  <td>'.$user['nombre'].'</td>
 				                  <td>'.$user['email'].'</td>
+				                  <td>'.$user['telefono'].'</td>
 				                  <td>'.$user['rol_nombre'].'</td>
 				                  <td style="text-align: center;">
-				                  	<button data-id="'.$user['id'].'" data-name="'.$user['nombre'].'" data-email="'.$user['email'].'" data-id_rol="'.$user['id_rol'].'" class="btn btn-danger btn-sm btn-update-doc-meta"><i class="fa fa-pencil"></i></button>
+				                  	<button data-id="'.$user['id'].'" data-name="'.$user['nombre'].'" data-email="'.$user['email'].'" data-telefono="'.$user['telefono'].'" data-id_rol="'.$user['id_rol'].'" class="btn btn-danger btn-sm btn-update-doc-meta"><i class="fa fa-pencil"></i></button>
 				                  </td>
 				                  <td style="text-align: center;">
-				                  	<button data-id="'.$user['id'].'" data-name="'.$user['nombre'].'" data-email="'.$user['email'].'" data-id_rol="'.$user['id_rol'].'" class="btn btn-danger btn-sm btn-delete-doc-meta"><i class="fa fa-trash"></i></button>
+				                  	<button data-id="'.$user['id'].'" class="btn btn-danger btn-sm btn-delete-doc-meta"><i class="fa fa-trash"></i></button>
 				                  </td>
 				                </tr>');
 				            }
