@@ -100,7 +100,7 @@
             <li>
                 <a href="../../contenido/principal/"><i class="fa fa-home"></i> <span>HOME</span></a>
             </li>
-            <?php
+            <!-- <?php
             if (!empty($categorias)) {
             foreach ($categorias as $cat) { ?>
               <?php if (!empty($cat->getSubCategorias())) { ?>
@@ -150,35 +150,35 @@
                 </li>
               <?php } ?>
             <?php } ?>
-          <?php } ?>
-          <li>
+          <?php } ?> -->
+          <!-- <li>
             <a href="../../control/documentos/" style="text-transform: uppercase;">
               <i class="fa fa-file"></i> <span>listado de documentos</span>
             </a>
-          </li>
-          <li>
+          </li> -->
+          <!-- <li>
             <a href="../../control/documentos/" style="text-transform: uppercase;">
               <i class="fa fa-file"></i> <span>gestion de documentos</span>
             </a>
-          </li>
+          </li> -->
           <li>
             <a href="#" style="text-transform: uppercase;">
-              <i class="fa fa-file"></i> <span>gestion de metadata</span>
+              <i class="fa fa-file"></i> <span>gestion de categoria</span>
               <span class="pull-right-container">
                 <i class="fa fa-angle-left pull-right"></i>
               </span>
             </a>
             <ul class="treeview-menu" >
               <li>
-                <a href="../../control/metadata/"><i class="fa fa-circle-o text-red"></i> <span>lista de categorias</span>
+                <a href="../../categorias/show/"><i class="fa fa-circle-o text-red"></i> <span>agregar categoria</span>
                 </a>
               </li>
               <li>
-                <a href="../../control/documentosMetadata/"><i class="fa fa-circle-o text-red"></i> <span>lista de metadata</span>
+              <a href="../../control/metadata/"><i class="fa fa-circle-o text-red"></i> <span>lista de categorias</span>
                 </a>
               </li>
-              <li>
-                <a href="../../contenido/equipo_de_trabajo/4"><i class="fa fa-circle-o text-red"></i> <span>lista de metadata....</span>
+              <li style="display: none;">
+                <a href="../../control/documentosMetadata/"><i class="fa fa-circle-o text-red"></i> <span></span>
                 </a>
               </li>
             </ul>
@@ -188,11 +188,11 @@
               <i class="fa fa-file"></i> <span>gestion de usuarios</span>
             </a>
           </li>
-          <li>
+          <!-- <li>
             <a href="../../categorias/show/" style="text-transform: uppercase;">
               <i class="fa fa-edit"></i> <span>agregar categoria</span>
             </a>
-          </li>
+          </li> -->
         </ul>
         <!-- /.sidebar-menu -->
       </section>
