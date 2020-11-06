@@ -10,13 +10,16 @@
 		private $_nombre;
 
 		private $_email;
+		
+		private $_telefono;
 
 		private $_id_rol;
 
 
-		function __construct($nombre, $email, $id_rol) {
+		function __construct($nombre, $email, $telefono, $id_rol) {
 			$this->_nombre = $nombre;
 			$this->_email = $email;
+			$this->_telefono = $telefono;
 			$this->_id_rol = $id_rol;
 		}
 		
@@ -42,6 +45,14 @@
 
 		function get_email() {
 			return $this->_email;
+		}
+
+		function set_telefono($telefono) {
+			$this->_telefono = $telefono;
+		}
+
+		function get_telefono() {
+			return $this->_telefono;
 		}
 
 		function set_id_rol($id_rol) {

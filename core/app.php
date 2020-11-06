@@ -107,7 +107,6 @@
 
     		//asociamos la instancia a $this->_controller
     		$this->_controller = new $fullClass;
-			$url = [];
     		// validamos si existe un metodo
     		if (isset($url[1])) {
 
