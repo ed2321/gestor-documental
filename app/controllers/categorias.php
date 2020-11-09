@@ -327,6 +327,41 @@
 				print(json_encode(['ok' => false, 'error' => 'Faltan campos por ingresar']));
 			}
 		}
+
+		function get_sub_categori(){
+			$id_sub_cat = $_POST['id_sub_cat'];
+			if(!empty($id_sub_cat)){
+				$response = CatDAO::get_sub_categori($id_sub_cat);
+				$json = ['ok' => true, 'data' => $response];
+			}
+			else {
+				$json = ['ok' => false, 'error' => 'Faltan datos'];
+			}
+			print(json_encode($json));
+		}
+		function get_categori(){
+			$id_cat = $_POST['id_cat'];
+			if(!empty($id_cat)){
+				$response = CatDAO::get_categori($id_cat);
+				$json = ['ok' => true, 'data' => $response];
+			}
+			else {
+				$json = ['ok' => false, 'error' => 'Faltan datos'];
+			}
+			print(json_encode($json));
+		}
+		function get_sub_subcategori(){
+			$id_sub_sub_cat = $_POST['id_sub_sub_cat'];
+			if(!empty($id_sub_sub_cat)){
+				$response = CatDAO::get_sub_subcategori($id_sub_sub_cat);
+				$json = ['ok' => true, 'data' => $response];
+			}
+			else {
+				$json = ['ok' => false, 'error' => 'Faltan datos'];
+			}
+			print(json_encode($json));
+		}
+
 	}
 
 ?>
