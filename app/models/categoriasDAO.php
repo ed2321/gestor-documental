@@ -82,6 +82,76 @@
 			}
 		}
 
+		/**
+		 *  Metodo que obtiene todas las categorias registradas en la DB
+		 * @return array con las categorias
+		 */
+		public static function get_categori($id_cat) {
+			try {
+
+				$conn = DB::instance();
+				$query = "SELECT c.id as id_cat_prin, c.nombre as nom_cat_prin,ifnull(co.`texto`,'') 'descripcion',ifnull(co.`imagen`,'') 'imagen' FROM categorias c 
+				LEFT JOIN contenido co on (co.`id`=c.`id` and co.`tipo_cat`=1) WHERE id = $id_cat ";
+				$res = $conn->prepare($query);
+				$res->execute();
+				$rows = $res->rowCount();
+				$conn->close();
+				if ($rows > 0) {
+					return $res->fetchAll();					
+				}
+				return null;
+
+			} catch (\PDOException $e) {
+				return null;
+			}
+		}
+		/**
+		 *  Metodo que obtiene todas las categorias registradas en la DB
+		 * @return array con las categorias
+		 */
+		public static function get_sub_categori($id_sub_cat) {
+			try {
+
+				$conn = DB::instance();
+				$query = "SELECT c.id as id_sub, c.nombre as nom_sub, c.id_categoria,ifnull(co.`texto`,'') 'descripcion',ifnull(co.`imagen`,'') 'imagen'  FROM sub_categoria c
+				LEFT JOIN contenido co on (co.`id`=c.`id` and co.`tipo_cat`=2) WHERE id = $id_sub_cat ";
+				$res = $conn->prepare($query);
+				$res->execute();
+				$rows = $res->rowCount();
+				$conn->close();
+				if ($rows > 0) {
+					return $res->fetchAll();					
+				}
+				return null;
+
+			} catch (\PDOException $e) {
+				return null;
+			}
+		}
+		/**
+		 *  Metodo que obtiene todas las categorias registradas en la DB
+		 * @return array con las categorias
+		 */
+		public static function get_sub_subcategori($id_sub_sub_cat) {
+			try {
+
+				$conn = DB::instance();
+				$query = "SELECT c.id as id_sub, c.nombre as nom_sub, c.id_subcategoria,ifnull(co.`texto`,'') 'descripcion',ifnull(co.`imagen`,'') 'imagen' FROM sub_categoria2 c
+				LEFT JOIN contenido co on (co.`id`=c.`id` and co.`tipo_cat`=3) WHERE id = $id_sub_sub_cat ";
+				$res = $conn->prepare($query);
+				$res->execute();
+				$rows = $res->rowCount();
+				$conn->close();
+				if ($rows > 0) {
+					return $res->fetchAll();					
+				}
+				return null;
+
+			} catch (\PDOException $e) {
+				return null;
+			}
+		}
+
 		
 	}
 
