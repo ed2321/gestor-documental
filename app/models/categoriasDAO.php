@@ -120,7 +120,10 @@
 				$rows = $res->rowCount();
 				$conn->close();
 				if ($rows > 0) {
-					return $res->fetchAll();					
+					foreach ($res->fetchAll() as $row ) {
+						$result = $row;
+					}
+					return $result;		
 				}
 				return null;
 
