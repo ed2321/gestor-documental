@@ -604,6 +604,7 @@ $(document).ready(function () {
           console.log(res);
           $("#categoria-principal").val(res.data.nom_cat_prin);
           $("#cont-category-principal").val(res.data.descripcion);
+          $("#btn-category-principal").data("id_cat_prin", res.data.id_cat_prin);
           //falta el id del boton data atributo
         } else {
           $.jGrowl(res.error, {
@@ -986,6 +987,7 @@ $(document).ready(function () {
     // var action = document.getElementById("type-action").value;
     var cat_name = document.getElementById("categoria-principal").value;
     var img = document.getElementById("image_principal").files[0];
+    var id_categoria = $("#btn-category-principal").data("id_cat_prin");
     var formdata = new FormData(document.getElementById("form-save-categoria-principal"));
 
     // if (action == "update") {
@@ -996,27 +998,50 @@ $(document).ready(function () {
     formdata.append("texto", texto);
     // formdata.append("categoria", cat);
     // formdata.append("desc_img", desc_img);
-
-    $.ajax({
-      url: "../../categorias/registro_categoria",
-      type: "post",
-      data: formdata,
-      contentType: false,
-      processData: false,
-      success: function (res) {
-        var response = JSON.parse(res);
-        if (response.ok) {
-          location.reload(true);
-        } else {
-          $.jGrowl(response.error, {
-            position: "bottom-right",
-            header: "Fallo del Registro",
-            theme: "bg-red",
-            life: 5000,
-          });
-        }
-      },
-    });
+    if(!id_categoria) {
+      $.ajax({
+        url: "../../categorias/registro_categoria",
+        type: "post",
+        data: formdata,
+        contentType: false,
+        processData: false,
+        success: function (res) {
+          var response = JSON.parse(res);
+          if (response.ok) {
+            location.reload(true);
+          } else {
+            $.jGrowl(response.error, {
+              position: "bottom-right",
+              header: "Fallo del Registro",
+              theme: "bg-red",
+              life: 5000,
+            });
+          }
+        },
+      });
+    } else {
+      formdata.append("id_categoria", id_categoria);
+      $.ajax({
+        url: "../../categorias/update_categoria",
+        type: "post",
+        data: formdata,
+        contentType: false,
+        processData: false,
+        success: function (res) {
+          var response = JSON.parse(res);
+          if (response.ok) {
+            location.reload(true);
+          } else {
+            $.jGrowl(response.error, {
+              position: "bottom-right",
+              header: "Fallo del Registro",
+              theme: "bg-red",
+              life: 5000,
+            });
+          }
+        },
+      });
+    }
   });
 
 
