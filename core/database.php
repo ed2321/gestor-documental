@@ -93,6 +93,24 @@
             $class = __CLASS__;
             self::$_instance = new $class;
         return self::$_instance;
+	}
+	public function execute($query) {
+        try {
+            if (!$result = $this->_connection->query($query)) {
+				throw new Exception($this->_connection->error);
+			}
+			return $result;
+        } catch (Exception $e) {
+            $exception = new Exception($e->getMessage() . " | at SQL: $query");
+            throw $exception;
+        }
+	}
+	
+	private function queryType($query) {
+        if (preg_match('/^INSERT/', trim($query)))
+            return 'INSERT';
+        else
+            return 'OTHER';
     }
 
     /**
