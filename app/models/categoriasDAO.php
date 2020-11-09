@@ -66,6 +66,21 @@
 				return ['ok' => true, 'error' => 'Error:! ' . $e->getMessage()];
 			}
 		}
+		public static function inser_sub_subcat($cat_name,$name, $text, $user,$id_catate,$type) {
+			try {
+				$conn = DB::instance();
+				$insert = "INSERT INTO `sub_categoria2` SET nombre='$cat_name', id_subcategoria='$id_catate' ";
+				$result = $conn->execute($insert);
+				$stmt = $conn->execute("SELECT LAST_INSERT_ID()");
+				$id_cat = $stmt->fetchColumn();
+				$query = "INSERT INTO `contenido` SET `id` = '$id_cat',`imagen`='$name', `texto`='$text', `id_admin`='$user', `tipo_cat`='$type' ";
+				$result = $conn->execute($query);
+				$conn->close();
+				return ['ok' => true];
+			} catch(\PDOException $e) {
+				return ['ok' => true, 'error' => 'Error:! ' . $e->getMessage()];
+			}
+		}
 
 		
 	}
