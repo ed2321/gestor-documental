@@ -9,12 +9,12 @@
                 <div class="input-group">
                     <select class="custom-select" id="id_doc_meta" aria-label="Example select with button addon">
                         <!-- <option selected>Elegir...</option> -->
-                        <?php 
-		                if (!empty($data_doc_metada)) {
-		                	foreach ($data_doc_metada['data_select'] as $doc_meta) {
+		                	<!-- foreach ($data_doc_metada['data_select'] as $doc_meta) {
 		                		print('<option value="'.$doc_meta['id_doc_meta'].'" >'.$doc_meta['name_meta'].'</option>');
-				            }
-			            }?>
+				            } -->
+                            <option value="1"> Integer </option>
+                            <option value="2"> String </option>
+                            <option value="3"> Date </option>
                     </select>
                     <div class="input-group-append">
                         <button class="btn btn-outline-secondary" id="add_doc_metadata" type="button">Button</button>

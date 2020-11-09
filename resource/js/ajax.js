@@ -620,11 +620,12 @@ $(document).ready(function () {
    * Evento que se dispara cuando se desea eliminar una categoria de documento
    */
   $("body").on("click", "#btn_add_doc_cat_meta", function () {
-    var id = $(this).data("id_doc_meta");
-	var id_meta = $('#id_doc_meta').val();
+    var id = $("#btn_add_doc_cat_meta").data("id_doc_meta");
+	  var name_metadata = $('#name_metadata').val();
+	  var type = $('#id_meta_type').val();
     $.post(
       "../../metadata/add_metatada_of_categorie/",
-      { id_doc_cat: id,id_doc_meta : id_meta },
+      { id_cat: id,name_metadata : name_metadata,id_meta_type:type },
       function (response) {
         var res = JSON.parse(response);
         if (res.ok) {
@@ -633,28 +634,33 @@ $(document).ready(function () {
 				{ id_doc_cat: id },
 				function (response) {
 				  var res = JSON.parse(response);
-				  if (res.data_select) {
 					$("#id_doc_meta").empty();
-					$.each(res.data_select, function (index, element) {
-					  $("#id_doc_meta").append(
-						`<option value="${element.id_doc_meta}"> ${element.name_meta} </option>`
-					  );
-					});
+          $("#id_doc_meta").append(
+						`<option value="1">Integer</option>`
+					);
+          $("#id_doc_meta").append(
+						`<option value="2">String</option>`
+					);
+          $("#id_doc_meta").append(
+						`<option value="3">Date</option>`
+					);
 					$("#list_doc_metadata_asing > tbody").empty();
-					$.each(res.data_asign, function (index, element) {
-					  $("#list_doc_metadata_asing > tbody:last-child").append(`<tr>
-					  <td>${element.name_meta}</td>
-					  <td><button data-id_doc_cat_meta="${element.id_doc_cat_meta}"  class="btn btn-info btn-sm btn-delete-doc-cat_metadata"><i class="fa fa-trash"></i></button></td>
-					  </tr>`);
-					});
-				  } else {
-					$.jGrowl(res.error, {
-					  position: "bottom-right",
-					  header: "Ocurrio un problema",
-					  theme: "bg-red",
-					  life: 5000,
-					});
-				  }
+          $.each(res.data_asign, function (index, element) {
+            var type = '';
+            if(element.type == 1) {
+              type = "Integer";
+            }  else if(element.type == 2) {
+              type = "String";
+            } else if(element.type == 3) {
+              type = "Date";
+            }
+            $("#list_doc_metadata_asing > tbody:last-child").append(`<tr>
+            <td>${element.nombre}</td>
+            <td>${element.name_meta}</td>
+            <td>${type}</td>
+            <td><button data-id_doc_cat_meta="${element.id}"  class="btn btn-info btn-sm btn-delete-doc-cat_metadata"><i class="fa fa-trash"></i></button></td>
+            </tr>`);
+          });
 				}
 			  );
         }
@@ -691,31 +697,36 @@ $(document).ready(function () {
       "../../metadata/get_metatada_of_categorie/",
       { id_doc_cat: id },
       function (response) {
-		var res = JSON.parse(response);
-        if (res.data_select) {
+	    	var res = JSON.parse(response);
           $("#id_doc_meta").empty();
-          $.each(res.data_select, function (index, element) {
-            $("#id_doc_meta").append(
-              `<option value="${element.id_doc_meta}"> ${element.name_meta} </option>`
-            );
-          });
+          $("#id_doc_meta").append(
+						`<option value="1">Integer</option>`
+					);
+          $("#id_doc_meta").append(
+						`<option value="2">String</option>`
+					);
+          $("#id_doc_meta").append(
+						`<option value="3">Date</option>`
+					);
           $("#list_doc_metadata_asing > tbody").empty();
           $.each(res.data_asign, function (index, element) {
-            $("#list_doc_metadata_asing > tbody:last-child").append(`<tr>
-			<td>${element.name_meta}</td>
-			<td><button data-id_doc_cat_meta="${element.id_doc_cat_meta}"  class="btn btn-info btn-sm btn-delete-doc-cat_metadata"><i class="fa fa-trash"></i></button></td>
-			</tr>`);
-          });
-          $("#add_metadata_doc").modal("show");
-        } else {
-          $.jGrowl(res.error, {
-            position: "bottom-right",
-            header: "Ocurrio un problema",
-            theme: "bg-red",
-            life: 5000,
-          });
+              var type = '';
+              if(element.type == 1) {
+                type = "Integer";
+              }  else if(element.type == 2) {
+                type = "String";
+              } else if(element.type == 3) {
+                type = "Date";
+              }
+              $("#list_doc_metadata_asing > tbody:last-child").append(`<tr>
+              <td>${element.nombre}</td>
+              <td>${element.name_meta}</td>
+              <td>${type}</td>
+              <td><button data-id_doc_cat_meta="${element.id}"  class="btn btn-info btn-sm btn-delete-doc-cat_metadata"><i class="fa fa-trash"></i></button></td>
+              </tr>`);
+            });
+        $("#add_metadata_doc").modal("show");
         }
-      }
     );
     
   });
@@ -738,28 +749,33 @@ $(document).ready(function () {
 				{ id_doc_cat: id },
 				function (response) {
 				  var res = JSON.parse(response);
-				  if (res.data_select) {
 					$("#id_doc_meta").empty();
-					$.each(res.data_select, function (index, element) {
-					  $("#id_doc_meta").append(
-						`<option value="${element.id_doc_meta}"> ${element.name_meta} </option>`
-					  );
-					});
+					$("#id_doc_meta").append(
+						`<option value="1">Integer</option>`
+					);
+          $("#id_doc_meta").append(
+						`<option value="2">String</option>`
+					);
+          $("#id_doc_meta").append(
+						`<option value="3">Date</option>`
+					);
 					$("#list_doc_metadata_asing > tbody").empty();
-					$.each(res.data_asign, function (index, element) {
-					  $("#list_doc_metadata_asing > tbody:last-child").append(`<tr>
-					  <td>${element.name_meta}</td>
-					  <td><button data-id_doc_cat_meta="${element.id_doc_cat_meta}"  class="btn btn-info btn-sm btn-delete-doc-cat_metadata"><i class="fa fa-trash"></i></button></td>
-					  </tr>`);
-					});
-				  } else {
-					$.jGrowl(res.error, {
-					  position: "bottom-right",
-					  header: "Ocurrio un problema",
-					  theme: "bg-red",
-					  life: 5000,
-					});
-				  }
+          $.each(res.data_asign, function (index, element) {
+            var type = '';
+            if(element.type == 1) {
+              type = "Integer";
+            }  else if(element.type == 2) {
+              type = "String";
+            } else if(element.type == 3) {
+              type = "Date";
+            }
+            $("#list_doc_metadata_asing > tbody:last-child").append(`<tr>
+            <td>${element.nombre}</td>
+            <td>${element.name_meta}</td>
+            <td>${type}</td>
+            <td><button data-id_doc_cat_meta="${element.id}"  class="btn btn-info btn-sm btn-delete-doc-cat_metadata"><i class="fa fa-trash"></i></button></td>
+            </tr>`);
+          });
 				});
 			}
 		});

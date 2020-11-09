@@ -3,8 +3,8 @@
 	<div class="info-box p-rel">
 		<span class="info-box-icon"><i class="fa fa-book"></i></span>
 		<div class="info-box-content">
-			<h2 class="info-box-text"><b>Control de Categorias de Documentos</b></h2>
-			<span class="info-box-number">A continuación podra consultar el listado de las categorias de documentos cargados en el sistema</span>
+			<h2 class="info-box-text"><b>Gestion de Categorias </b></h2>
+			<span class="info-box-number">A continuación podra consultar el listado de las categorias cargados en el sistema</span>
 		</div>
 	</div>
 </section>
@@ -12,8 +12,7 @@
 	<!-- Your Page Content Here -->
 	<div class="box box-danger">
 		<div class="box-header with-border text-center">
-			<h3 class="box-title"><b>Listado de categorias de documentos</b></h3>
-			<button class="btn btn-danger btn-fixed" data-toggle="modal" data-target="#myModalDocCategori"><i class="fa fa-plus"></i></button>
+			<h3 class="box-title"><b>Listado de categorias</b></h3>
 		</div>
 		<div class="box-body">
 			<div class="row">
@@ -23,23 +22,15 @@
 							<tr>
 								<th>Categoria</th>
 								<th style="width: 90px">add meta</th>
-								<th style="width: 90px">Update</th>
-								<th style="width: 100px">Delete</th>
 							</tr>
 						</thead>
 						<?php
 						if (!empty($list_doc_cat)) {
 							foreach ($list_doc_cat as $doc_cat) {
 								print('<tr>
-				                  <td>' . $doc_cat['nombre_categoria'] . '</td>
+				                  <td>' . $doc_cat['nombre'] . '</td>
 				                  <td style="text-align: center;">
-				                  	<button data-id="' . $doc_cat['id_doc_cat'] . '" class="btn btn-danger btn-sm btn-add-doc-cat"><i class="fa fa-plus"></i></button>
-				                  </td>
-				                  <td style="text-align: center;">
-				                  	<button data-id="' . $doc_cat['id_doc_cat'] . '" data-name="' . $doc_cat['nombre_categoria'] . '" class="btn btn-danger btn-sm btn-update-doc-cat"><i class="fa fa-pencil"></i></button>
-				                  </td>
-				                  <td style="text-align: center;">
-				                  	<button data-id="' . $doc_cat['id_doc_cat'] . '" data-name="' . $doc_cat['nombre_categoria'] . '" class="btn btn-danger btn-sm btn-delete-doc-cat"><i class="fa fa-trash"></i></button>
+				                  	<button data-id="' . $doc_cat['id'] . '" class="btn btn-danger btn-sm btn-add-doc-cat"><i class="fa fa-plus"></i></button>
 				                  </td>
 				                </tr>');
 							}
@@ -53,17 +44,17 @@
 </section>
 
 <!-- Modal Crear categorias archivos -->
-<div class="modal fade modal-danger" id="myModalDocCategori" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<!-- <div class="modal fade modal-danger" id="myModalDocCategori" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 	<div class="modal-dialog" role="document">
 		<div class="modal-content">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-				<h4 class="modal-title" id="myModalLabel">Formulario para el registro de cagorias de documentos</h4>
+				<h4 class="modal-title" id="myModalLabel">Formulario para el registro de cagorias </h4>
 			</div>
 			<div class="modal-body">
 				<div class="form-group">
 					<label for="titulo">Titulo de la categoria</label>
-					<input type="text" class="form-control" name="title_doc" id="nombre_categoria" placeholder="Nombre de categoria">
+					<input type="text" class="form-control" name="title_doc" id="nombre" placeholder="Nombre de categoria">
 				</div>
 			</div>
 			<div class="modal-footer">
@@ -72,28 +63,27 @@
 			</div>
 		</div>
 	</div>
-</div>
+</div> -->
 
 <div class="modal fade modal-danger" id="add_metadata_doc" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 	<div class="modal-dialog" role="document">
 		<div class="modal-content">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-				<h4 class="modal-title" id="myModalLabel">Formulario para el registro de metadata a categorias de documentos</h4>
+				<h4 class="modal-title" id="myModalLabel">Formulario para el registro de metadata a categorias</h4>
 			</div>
 			<div class="modal-body">
 				<div class="form-horizontal">
 					<div class="form-group">
-						<label for="inputEmail3" class="col-sm-3 control-label">add category</label>
-						<div class="col-sm-9">
-							<select class="form-control" id="id_doc_meta">
-								<!-- <option selected>Elegir...</option> -->
-								<?php
-								if (!empty($data_doc_metada)) {
-									foreach ($data_doc_metada['data_select'] as $doc_meta) {
-										print('<option value="' . $doc_meta['id_doc_meta'] . '" >' . $doc_meta['name_meta'] . '</option>');
-									}
-								} ?>
+						<label for="inputEmail3" class="col-sm-2 control-label">Metadata</label>
+						<div class="col-sm-4">
+						<input type="text" class="form-control" name="title_doc" id="name_metadata">
+						</div>
+						<div class="col-sm-4">
+							<select class="form-control" id="id_meta_type">
+                            <option value="1"> Integer </option>
+                            <option value="2"> String </option>
+                            <option value="3"> Date </option>
 							</select>
 						</div>
 					</div>
@@ -101,7 +91,9 @@
 				<table id="list_doc_metadata_asing" class="display table table-bordered " cellspacing="0" width="100%">
 					<thead>
 						<tr>
+							<th>Categoria</th>
 							<th>Metadata</th>
+							<th>Type</th>
 							<th style="width: 90px">delete</th>
 						</tr>
 					</thead>

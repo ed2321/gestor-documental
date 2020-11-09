@@ -27,7 +27,7 @@
 			try {
 				$result = [];
 				$conn = DB::instance();
-				$query = "SELECT * FROM documentos_categorias";
+				$query = "SELECT * FROM categorias";
 				$res = $conn->prepare($query);
 				$res->execute();
 				$conn->close();
@@ -98,9 +98,10 @@
 			try {
 				$result = [];
 				$conn = DB::instance();
-				$query = "SELECT dc.id_doc_cat_meta, dm.name_meta FROM documentos_metadata dm
-				INNER JOIN doc_cat_metadata dc ON (dc.`id_doc_meta`=dm.`id_doc_meta`)
-				WHERE   dc.`id_doc_cat` = ? ";
+				$query = "SELECT ct.id,ct.nombre,dm.name_meta,dm.type FROM categorias ct
+				INNER JOIN doc_cat_metadata dc ON (dc.`id_doc_cat`= ct.`id`)
+				INNER JOIN documentos_metadata dm ON (dc.`id_doc_meta` = dm.`id_doc_meta`)
+				WHERE   dc.`id_doc_cat` = ?";
 				$res = $conn->prepare($query);
 				$res->bindParam(1, $id_doc_meta, \PDO::PARAM_INT);
 				$res->execute();
@@ -117,13 +118,15 @@
 			}
 		}
 
-		public static function add_metatada_of_categorie($id_doc_cat,$id_doc_meta) {
+		public static function add_metatada_of_categorie($id_cat,$name_metadata,$id_meta_type) {
 			try {
 				$conn = DB::instance();
-				$query = "INSERT INTO `doc_cat_metadata` ( `id_doc_cat`, `id_doc_meta`) VALUES (?, ?)";
+				$insert = "INSERT INTO `documentos_metadata` SET name_meta='$name_metadata', `type`='$id_meta_type'";
+				$result = $conn->execute($insert);
+				$stmt = $conn->execute("SELECT LAST_INSERT_ID()");
+				$id_doc_meta = $stmt->fetchColumn();
+				$query = "INSERT INTO `doc_cat_metadata` SET `id_doc_cat` = '$id_cat', `id_doc_meta`='$id_doc_meta' ";
 				$res = $conn->prepare($query);
-				$res->bindValue(1, $id_doc_cat, \PDO::PARAM_INT);
-				$res->bindValue(2, $id_doc_meta, \PDO::PARAM_INT);
 				$res->execute();
 				$conn->close();
 				return ['ok' => true];
@@ -134,7 +137,7 @@
 		public static function delete_documentos_categorias_metadata($id_doc_cat_meta) {
 			try {
 				$conn = DB::instance();
-				$query = "DELETE FROM doc_cat_metadata WHERE id_doc_cat_meta = ?";
+				$query = "DELETE FROM documentos_metadata WHERE id_doc_cat_meta = ?";
 				$res = $conn->prepare($query);
 				$res->bindParam(1, $id_doc_cat_meta, \PDO::PARAM_INT);
 				$res->execute();

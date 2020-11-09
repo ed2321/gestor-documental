@@ -20,7 +20,8 @@
    			<table class="table table-bordered">
    				<thead>
    					<tr>
-   						<th>Categoria</th>
+						   <th>Categoria</th>
+						   <th><button  class="btn btn-danger btn-add-categoria-menu center-block"><i class="fa fa-plus"></i></button></th>
    					</tr>
    				</thead>
    				<tbody id="tbl-cat">
@@ -29,7 +30,7 @@
    							foreach ($categorias as $c) {
 									print('
 										<tr style="cursor:pointer" data-id="'.$c->getId().'" class="row-cat">
-											<td>'.$c->getNombre().'</td>
+											<td colspan="2" >'.$c->getNombre().'</td>
 										</tr>');
    							}
    						}
