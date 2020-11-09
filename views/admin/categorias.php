@@ -22,6 +22,7 @@
    					<tr>
 						   <th>Categoria</th>
 						   <th><button  class="btn btn-danger center-block" data-toggle="modal" data-target="#modal-categorias-super"><i class="fa fa-plus"></i></button></th>
+						   <th>Delete</th>
    					</tr>
    				</thead>
    				<tbody id="tbl-cat">
@@ -31,6 +32,9 @@
 									print('
 										<tr style="cursor:pointer" data-id="'.$c->getId().'" class="row-cat">
 											<td colspan="2" >'.$c->getNombre().'</td>
+											<td style="text-align: center;">
+				                  			<button data-id_cat="'.$c->getId().'" class="btn btn-danger btn-sm btn-delete-cat"><i class="fa fa-trash"></i></button>
+				                  			</td>
 										</tr>');
    							}
    						}

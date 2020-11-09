@@ -114,6 +114,20 @@
 
 			print(json_encode($json));
 		}
+		/**
+		 *  Metodo que obtiene el id de la categoria hacer elminada y la envia al DAO
+		 */
+		function delete_cat() {
+			$id = $_POST['id_cat'];
+			if (!empty($id)) {
+				$json = SubCatDAO::delete_cat($id);
+			}
+			else {
+				$json = ['ok' => false, 'error' => 'Falta el id de la subcategoria'];
+			}
+
+			print(json_encode($json));
+		}
 
 		/**
 		 *  Metodo que obtiene el id de la subcategoria hacer elminada y la envia al DAO
@@ -172,7 +186,7 @@
 				$res = array();
 				$text = htmlspecialchars($_POST['texto']);
 				$cat_name = htmlspecialchars($_POST['cat_name']);
-				$name;
+				$name = '';
 				if (isset($_FILES['archivo'])) {
 					$name = $_FILES['archivo']['name'];
 					$arr = explode(".", $name);
@@ -224,7 +238,7 @@
 				$res = array();
 				$text = htmlspecialchars($_POST['texto']);
 				$cat_name = htmlspecialchars($_POST['sub_categoria']);
-				$name;
+				$name = '';
 				if (isset($_FILES['archivo'])) {
 					$name = $_FILES['archivo']['name'];
 					$arr = explode(".", $name);

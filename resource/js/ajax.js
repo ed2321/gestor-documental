@@ -309,6 +309,26 @@ $(document).ready(function () {
       }
     });
   });
+  /*
+   * Evento que se dispara cuando se desea eliminar una categoria
+   */
+  $("body").on("click", ".btn-delete-cat", function () {
+    var id = $(this).data("id_cat");
+
+    $.post("../../categorias/delete_cat/", { id_cat: id }, function (response) {
+      var res = JSON.parse(response);
+      if (res.ok) {
+        location.reload(true);
+      } else {
+        $.jGrowl(res.error, {
+          position: "bottom-right",
+          header: "Ocurrio un problema",
+          theme: "bg-red",
+          life: 5000,
+        });
+      }
+    });
+  });
 
   /**
    * Evento que se dispara cuando se seleciona una categoria
