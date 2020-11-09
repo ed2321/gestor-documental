@@ -22,6 +22,7 @@
    					<tr>
 						   <th>Categoria</th>
 						   <th><button  class="btn btn-danger center-block" data-toggle="modal" data-target="#modal-categorias-super"><i class="fa fa-plus"></i></button></th>
+						   <th>Delete</th>
    					</tr>
    				</thead>
    				<tbody id="tbl-cat">
@@ -31,6 +32,9 @@
 									print('
 										<tr style="cursor:pointer" data-id="'.$c->getId().'" class="row-cat">
 											<td colspan="2" >'.$c->getNombre().'</td>
+											<td style="text-align: center;">
+				                  			<button data-id_cat="'.$c->getId().'" class="btn btn-danger btn-sm btn-delete-cat"><i class="fa fa-trash"></i></button>
+				                  			</td>
 										</tr>');
    							}
    						}
@@ -114,7 +118,15 @@
   				<div class="form-group">
                   	<label for="titulo">Nueva subcategoria</label>
                   	<input type="text" class="form-control" name="sub_categoria" placeholder="Subcategoria">
-                </div>
+				</div>
+				<input type="hidden" name="MAX_FILE_SIZE" VALUE="2000000">
+				<div class="form-group">
+					<input class="btn btn-danger" type="file" id="image_secondary" name="archivo">
+				</div>      
+				<div class="form-group">
+					<label>Contenido</label>
+					<textarea class="form-control" rows="6" id="cont-category-secondary" name="texto" placeholder="Ingrese el contenido." required="true"></textarea>
+				</div>
       		</div>
       		<div class="modal-footer">
 	        	<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
@@ -154,7 +166,15 @@
                <div class="form-group">
                	<label for="titulo">subcategoria</label>
                   <input type="text" class="form-control" name="subcategoria" placeholder="Subcategoria">
-               </div>
+			   </div>
+			   <input type="hidden" name="MAX_FILE_SIZE" VALUE="2000000">
+				<div class="form-group">
+					<input class="btn btn-danger" type="file" id="image_tercer" name="archivo">
+				</div>      
+				<div class="form-group">
+					<label>Contenido</label>
+					<textarea class="form-control" rows="6" id="cont-category-tercer" name="texto" placeholder="Ingrese el contenido." required="true"></textarea>
+				</div>
       		</div>
       		<div class="modal-footer">
 	        	<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>

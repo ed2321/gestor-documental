@@ -268,7 +268,7 @@ $(document).ready(function () {
     var formdata = new FormData(form);
 
     $.ajax({
-      url: "../../categorias/insert/",
+      url: "../../categorias/registro_subcategoria",
       type: "post",
       data: formdata,
       contentType: false,
@@ -296,6 +296,26 @@ $(document).ready(function () {
     var id = $(this).data("id");
 
     $.post("../../categorias/delete/", { id: id }, function (response) {
+      var res = JSON.parse(response);
+      if (res.ok) {
+        location.reload(true);
+      } else {
+        $.jGrowl(res.error, {
+          position: "bottom-right",
+          header: "Ocurrio un problema",
+          theme: "bg-red",
+          life: 5000,
+        });
+      }
+    });
+  });
+  /*
+   * Evento que se dispara cuando se desea eliminar una categoria
+   */
+  $("body").on("click", ".btn-delete-cat", function () {
+    var id = $(this).data("id_cat");
+
+    $.post("../../categorias/delete_cat/", { id_cat: id }, function (response) {
       var res = JSON.parse(response);
       if (res.ok) {
         location.reload(true);
@@ -644,7 +664,8 @@ $(document).ready(function () {
 					);
           $("#id_doc_meta").append(
 						`<option value="3">Date</option>`
-					);
+          );
+          $('#list_doc_metadata_asing').DataTable().destroy();
 					$("#list_doc_metadata_asing > tbody").empty();
           $.each(res.data_asign, function (index, element) {
             var type = '';
@@ -662,8 +683,8 @@ $(document).ready(function () {
             <td><button data-id_doc_cat_meta="${element.id_doc_cat_meta}"  class="btn btn-info btn-sm btn-delete-doc-cat_metadata"><i class="fa fa-trash"></i></button></td>
             </tr>`);
           });
-				}
-			  );
+          $('#list_doc_metadata_asing').DataTable();
+        });
         }
         else {
         	$.jGrowl(res.error, {
@@ -708,7 +729,8 @@ $(document).ready(function () {
 					);
           $("#id_doc_meta").append(
 						`<option value="3">Date</option>`
-					);
+          );
+          $('#list_doc_metadata_asing').DataTable().destroy();
           $("#list_doc_metadata_asing > tbody").empty();
           $.each(res.data_asign, function (index, element) {
               var type = '';
@@ -726,7 +748,8 @@ $(document).ready(function () {
               <td><button data-id_doc_cat_meta="${element.id_doc_cat_meta}"  class="btn btn-info btn-sm btn-delete-doc-cat_metadata"><i class="fa fa-trash"></i></button></td>
               </tr>`);
             });
-        $("#add_metadata_doc").modal("show");
+            $('#list_doc_metadata_asing').DataTable();
+            $("#add_metadata_doc").modal("show");
         }
     );
     
@@ -759,7 +782,8 @@ $(document).ready(function () {
 					);
           $("#id_doc_meta").append(
 						`<option value="3">Date</option>`
-					);
+          );
+          $('#list_doc_metadata_asing').DataTable().destroy();
 					$("#list_doc_metadata_asing > tbody").empty();
           $.each(res.data_asign, function (index, element) {
             var type = '';
@@ -777,7 +801,8 @@ $(document).ready(function () {
             <td><button data-id_doc_cat_meta="${element.id_doc_cat_meta}"  class="btn btn-info btn-sm btn-delete-doc-cat_metadata"><i class="fa fa-trash"></i></button></td>
             </tr>`);
           });
-				});
+          $('#list_doc_metadata_asing').DataTable();
+        });
 			}
 		});
 	});

@@ -75,6 +75,24 @@
 				return ['ok' => false, 'error' => $e->getMessage()];
 			}
 		}
+		/**
+		 * Metodo elimina una subcategoria de la DB
+		 * @return array con la info de la transaccion
+		 */
+		public function delete_cat($id) {
+			try {
+				$conn = DB::instance();
+				$query = "DELETE FROM categorias WHERE id = ?";
+				$res = $conn->prepare($query);
+				$res->bindParam(1, $id, \PDO::PARAM_INT);
+				$res->execute();
+				$conn->close();
+				return ['ok' => true];
+
+			} catch (\PDOException $e) {
+				return ['ok' => false, 'error' => $e->getMessage()];
+			}
+		}
 
 		/**
 		 * Metodo obtiene las subcategorias de una categoria especifica
