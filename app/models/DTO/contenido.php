@@ -33,6 +33,10 @@
 		 * @var $id_admin contiene el nombre del administrador que ha registrado la informacion
 		 */
 		private $_id_admin;
+		/**
+		 * @var $type contiene el tipo de la categoria 1 cat, 2 subcat, 3 subsubcat
+		 */
+		private $_type;
 
 		function __construct($id, $img, $desc_img, $texto, $id_admin)
 		{
@@ -42,6 +46,9 @@
 			$this->_texto = $texto;
 			$this->_id_admin = $id_admin;
 		}
+
+		
+		
 
 		/**
 		 * Metodos Getters y Setters
@@ -94,6 +101,15 @@
 		function setAdmin($id_admin)
 		{
 			$this->_id_admin = $id_admin;
+		}
+		function getType()
+		{
+			return $this->_type;
+		}
+
+		function setType($type)
+		{
+			$this->_type = $type;
 		}
 	}
 ?>
