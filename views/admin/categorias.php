@@ -114,7 +114,15 @@
   				<div class="form-group">
                   	<label for="titulo">Nueva subcategoria</label>
                   	<input type="text" class="form-control" name="sub_categoria" placeholder="Subcategoria">
-                </div>
+				</div>
+				<input type="hidden" name="MAX_FILE_SIZE" VALUE="2000000">
+				<div class="form-group">
+					<input class="btn btn-danger" type="file" id="image_secondary" name="archivo">
+				</div>      
+				<div class="form-group">
+					<label>Contenido</label>
+					<textarea class="form-control" rows="6" id="cont-category-secondary" name="texto" placeholder="Ingrese el contenido." required="true"></textarea>
+				</div>
       		</div>
       		<div class="modal-footer">
 	        	<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
@@ -154,7 +162,15 @@
                <div class="form-group">
                	<label for="titulo">subcategoria</label>
                   <input type="text" class="form-control" name="subcategoria" placeholder="Subcategoria">
-               </div>
+			   </div>
+			   <input type="hidden" name="MAX_FILE_SIZE" VALUE="2000000">
+				<div class="form-group">
+					<input class="btn btn-danger" type="file" id="image_tercer" name="archivo">
+				</div>      
+				<div class="form-group">
+					<label>Contenido</label>
+					<textarea class="form-control" rows="6" id="cont-category-tercer" name="texto" placeholder="Ingrese el contenido." required="true"></textarea>
+				</div>
       		</div>
       		<div class="modal-footer">
 	        	<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>

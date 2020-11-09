@@ -268,7 +268,7 @@ $(document).ready(function () {
     var formdata = new FormData(form);
 
     $.ajax({
-      url: "../../categorias/insert/",
+      url: "../../categorias/registro_subcategoria",
       type: "post",
       data: formdata,
       contentType: false,
