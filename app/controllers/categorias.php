@@ -35,28 +35,31 @@
 		 */
 		private function pushSubCategories($cat, $subCat, $subCat2) {
 			$obj = [];
-			if (!empty($cat) and !empty($subCat)) {
+			// if (!empty($cat) and !empty($subCat)) {
+			if (!empty($cat) ) {
 				foreach ($cat as $value) {
 					$id = $value[0];
 					$newCat = new CatDTO($value[1]);
 					$newCat->setId($id);
 					$array = [];
-					for ($i=0; $i < count($subCat); $i++) {
-						if ($id == $subCat[$i][2]) {
-							$sub = new SubCatDTO($subCat[$i][1], $subCat[$i][2]);
-							$sub->setId($subCat[$i][0]);
-							$arraySub = [];
-							if (!empty($subCat2)) {
-								foreach ($subCat2 as $s) {
-									if ($subCat[$i][0] == $s[2]) {
-										$sc = new SubCatDTO2($s[1], $s[2]);
-										$sc->setId($s[0]);
-										$arraySub[] = $sc;
+					if(!empty($subCat)){
+						for ($i=0; $i < count($subCat); $i++) {
+							if ($id == $subCat[$i][2]) {
+								$sub = new SubCatDTO($subCat[$i][1], $subCat[$i][2]);
+								$sub->setId($subCat[$i][0]);
+								$arraySub = [];
+								if (!empty($subCat2)) {
+									foreach ($subCat2 as $s) {
+										if ($subCat[$i][0] == $s[2]) {
+											$sc = new SubCatDTO2($s[1], $s[2]);
+											$sc->setId($s[0]);
+											$arraySub[] = $sc;
+										}
 									}
 								}
+								$sub->setSubCategorias($arraySub);
+								$array[] = $sub;
 							}
-							$sub->setSubCategorias($arraySub);
-							$array[] = $sub;
 						}
 					}
 					$newCat->setSubCategorias($array);
