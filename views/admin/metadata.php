@@ -88,33 +88,26 @@
 						</div>
 					</div>
 				</div>
-				<table id="list_doc_metadata_asing" class="display table table-bordered " cellspacing="0" width="100%">
-					<thead>
-						<tr>
-							<th>Categoria</th>
-							<th>Metadata</th>
-							<th>Type</th>
-							<th style="width: 90px">delete</th>
-						</tr>
-					</thead>
-					<tbody>
-						<?php
-						// if (!empty($data_doc_metada)) {
-						// 	foreach ($data_doc_metada['data_asign'] as $doc_meta) {
-						// 		print('<tr>
-				        //           <td>' . $doc_cat['name_meta'] . '</td>
-				        //           <td style="text-align: center;">
-				        //           	<button data-id_doc_cat_meta="' . $doc_cat['id_doc_cat_meta'] . '"  class="btn btn-danger btn-sm btn-delete-doc-cat_metadata"><i class="fa fa-trash"></i></button>
-				        //           </td>
-				        //         </tr>');
-						// 	}
-						// } 
-						?>
-
-					</tbody>
-				</table>
-
-
+				<div class="col-sm-12">
+					<table id="list_doc_metadata_asing" class="display table dataTable" cellspacing="0" width="100%">
+						<thead>
+							<tr>
+								<th>Categoria</th>
+								<th>Metadata</th>
+								<th>Type</th>
+								<th style="width: 90px">delete</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td></td>
+							</tr>
+				        </tbody>
+					</table>
+				</div>
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>

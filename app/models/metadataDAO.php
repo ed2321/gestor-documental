@@ -98,7 +98,7 @@
 			try {
 				$result = [];
 				$conn = DB::instance();
-				$query = "SELECT ct.id,ct.nombre,dm.name_meta,dm.type FROM categorias ct
+				$query = "SELECT dc.id_doc_cat_meta,ct.id,ct.nombre,dm.name_meta,dm.type FROM categorias ct
 				INNER JOIN doc_cat_metadata dc ON (dc.`id_doc_cat`= ct.`id`)
 				INNER JOIN documentos_metadata dm ON (dc.`id_doc_meta` = dm.`id_doc_meta`)
 				WHERE   dc.`id_doc_cat` = ?";
@@ -137,9 +137,21 @@
 		public static function delete_documentos_categorias_metadata($id_doc_cat_meta) {
 			try {
 				$conn = DB::instance();
-				$query = "DELETE FROM documentos_metadata WHERE id_doc_cat_meta = ?";
+				$select = "SELECT id_doc_meta FROM doc_cat_metadata WHERE id_doc_cat_meta = ?";
+				$res = $conn->prepare($select);
+				$res->bindParam(1, $id_doc_cat_meta, \PDO::PARAM_INT);
+				$res->execute();
+				$row = $res->fetchAll();
+				$id_doc_meta = $row[0]['id_doc_meta'];
+
+				$query = "DELETE FROM doc_cat_metadata WHERE id_doc_cat_meta = ?";
 				$res = $conn->prepare($query);
 				$res->bindParam(1, $id_doc_cat_meta, \PDO::PARAM_INT);
+				$res->execute();
+
+				$query = "DELETE FROM documentos_metadata WHERE id_doc_meta = ?";
+				$res = $conn->prepare($query);
+				$res->bindParam(1, $id_doc_meta, \PDO::PARAM_INT);
 				$res->execute();
 				$conn->close();
 				return ['ok' => true];
