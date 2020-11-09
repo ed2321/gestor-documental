@@ -629,6 +629,7 @@ $(document).ready(function () {
       function (response) {
         var res = JSON.parse(response);
         if (res.ok) {
+          $('#name_metadata').val('');
         	$.post(
 				"../../metadata/get_metatada_of_categorie/",
 				{ id_doc_cat: id },
@@ -658,7 +659,7 @@ $(document).ready(function () {
             <td>${element.nombre}</td>
             <td>${element.name_meta}</td>
             <td>${type}</td>
-            <td><button data-id_doc_cat_meta="${element.id}"  class="btn btn-info btn-sm btn-delete-doc-cat_metadata"><i class="fa fa-trash"></i></button></td>
+            <td><button data-id_doc_cat_meta="${element.id_doc_cat_meta}"  class="btn btn-info btn-sm btn-delete-doc-cat_metadata"><i class="fa fa-trash"></i></button></td>
             </tr>`);
           });
 				}
@@ -722,7 +723,7 @@ $(document).ready(function () {
               <td>${element.nombre}</td>
               <td>${element.name_meta}</td>
               <td>${type}</td>
-              <td><button data-id_doc_cat_meta="${element.id}"  class="btn btn-info btn-sm btn-delete-doc-cat_metadata"><i class="fa fa-trash"></i></button></td>
+              <td><button data-id_doc_cat_meta="${element.id_doc_cat_meta}"  class="btn btn-info btn-sm btn-delete-doc-cat_metadata"><i class="fa fa-trash"></i></button></td>
               </tr>`);
             });
         $("#add_metadata_doc").modal("show");
@@ -773,7 +774,7 @@ $(document).ready(function () {
             <td>${element.nombre}</td>
             <td>${element.name_meta}</td>
             <td>${type}</td>
-            <td><button data-id_doc_cat_meta="${element.id}"  class="btn btn-info btn-sm btn-delete-doc-cat_metadata"><i class="fa fa-trash"></i></button></td>
+            <td><button data-id_doc_cat_meta="${element.id_doc_cat_meta}"  class="btn btn-info btn-sm btn-delete-doc-cat_metadata"><i class="fa fa-trash"></i></button></td>
             </tr>`);
           });
 				});
