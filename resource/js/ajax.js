@@ -264,29 +264,53 @@ $(document).ready(function () {
    * Evento que se dispara cuando se quiere guardar una subcategoria
    */
   $("#btn-subcategoria-save").on("click", function () {
+    var cap_subcat2 = $("#btn-subcategoria-save").data('cap_subcat2');
     var form = document.getElementById("form-save-subcat");
     var formdata = new FormData(form);
-
-    $.ajax({
-      url: "../../categorias/registro_subcategoria",
-      type: "post",
-      data: formdata,
-      contentType: false,
-      processData: false,
-      success: function (response) {
-        var res = JSON.parse(response);
-        if (res.ok) {
-          location.reload(true);
-        } else {
-          $.jGrowl(res.error, {
-            position: "bottom-right",
-            header: "Ocurrio un problema",
-            theme: "bg-red",
-            life: 5000,
-          });
-        }
-      },
-    });
+    if(!cap_subcat2) {
+      $.ajax({
+        url: "../../categorias/registro_subcategoria",
+        type: "post",
+        data: formdata,
+        contentType: false,
+        processData: false,
+        success: function (response) {
+          var res = JSON.parse(response);
+          if (res.ok) {
+            location.reload(true);
+          } else {
+            $.jGrowl(res.error, {
+              position: "bottom-right",
+              header: "Ocurrio un problema",
+              theme: "bg-red",
+              life: 5000,
+            });
+          }
+        },
+      });
+    } else {
+      formdata.append("id_sub_categoria", cap_subcat2);
+      $.ajax({
+        url: "../../categorias/update_subcategoria",
+        type: "post",
+        data: formdata,
+        contentType: false,
+        processData: false,
+        success: function (response) {
+          var res = JSON.parse(response);
+          if (res.ok) {
+            location.reload(true);
+          } else {
+            $.jGrowl(res.error, {
+              position: "bottom-right",
+              header: "Ocurrio un problema",
+              theme: "bg-red",
+              life: 5000,
+            });
+          }
+        },
+      });
+    }
   });
 
   /*
@@ -408,6 +432,7 @@ $(document).ready(function () {
     $("#categoria-id").val('');
     $("#sub_categoria").val('');
     $("#cont-category-secondary").val('');
+    $("#btn-subcategoria-save").data('cap_subcat2', subcat2);
     select.val(id);
     if(subcat2) {
       $.post(
@@ -595,13 +620,15 @@ $(document).ready(function () {
 
   $("body").on("click", "#modal-categorias-super-b", function () {
     var id = $(this).data("id_cat");
+    $("#categoria-principal").val('');
+    $("#cont-category-principal").val('');
+    $("#image_principal").val('');
     $.post(
       "../../categorias/get_categori/",
       { id_cat: id },
       function (response) {
         var res = JSON.parse(response);
         if (res.ok) {
-          console.log(res);
           $("#categoria-principal").val(res.data.nom_cat_prin);
           $("#cont-category-principal").val(res.data.descripcion);
           $("#btn-category-principal").data("id_cat_prin", res.data.id_cat_prin);
@@ -982,22 +1009,17 @@ $(document).ready(function () {
 
   // registrar categoria principal
   $("#btn-category-principal").on("click", function () {
-    // var desc_img = document.getElementById("desc-img").value; 
     var texto = document.getElementById("cont-category-principal").value;
-    // var action = document.getElementById("type-action").value;
     var cat_name = document.getElementById("categoria-principal").value;
     var img = document.getElementById("image_principal").files[0];
     var id_categoria = $("#btn-category-principal").data("id_cat_prin");
     var formdata = new FormData(document.getElementById("form-save-categoria-principal"));
 
-    // if (action == "update") {
-    //   img = actualizarCategoria(img);
-    // }
+    
     formdata.append("archivo", img);
     formdata.append("cat_name", cat_name);
     formdata.append("texto", texto);
-    // formdata.append("categoria", cat);
-    // formdata.append("desc_img", desc_img);
+    
     if(!id_categoria) {
       $.ajax({
         url: "../../categorias/registro_categoria",
