@@ -425,7 +425,7 @@ $(document).ready(function () {
               position: "bottom-right",
               header: "Ocurrio un problema",
               theme: "bg-red",
-              life: 5000,
+              life: 5000,  
             });
           }
         });
