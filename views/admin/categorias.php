@@ -15,14 +15,14 @@
    	<div class="box box-danger">
    		<div class="box-header with-border text-center">
    			<h3 class="box-title"><b>Listado de Categorias</b></h3>
+			<button  class="btn btn-danger center-block" data-toggle="modal" data-target="#modal-categorias-super"><i class="fa fa-plus"></i></button>
    		</div>
    		<div class="box-body">
    			<table class="table table-bordered">
    				<thead>
    					<tr>
 						   <th>Categoria</th>
-						   <th><button  class="btn btn-danger center-block" data-toggle="modal" data-target="#modal-categorias-super"><i class="fa fa-plus"></i></button></th>
-						   <th>Delete</th>
+						   <th width="50">Delete</th>
    					</tr>
    				</thead>
    				<tbody id="tbl-cat">
@@ -48,12 +48,14 @@
    	<div class="box box-danger">
    		<div class="box-header with-border text-center">
    			<h3 class="box-title"><b>Categorias listadas</b></h3>
+			<button class="btn btn-danger" data-toggle="modal" data-target="#modal-categorias" data-categoria="0" id="btn-subcat" style="visibility:hidden"><i class="fa fa-plus"></i></button>
    		</div>
    		<div class="box-body">
    			<table class="table table-bordered">
    				<thead>
    					<tr>
    						<th>Categoria</th>
+   						<th width="50"></th>
    						<th width="50"></th>
    					</tr>
    				</thead>
@@ -64,7 +66,6 @@
                   </tr>
    				</tbody>
    			</table>
-            <button class="btn btn-danger" data-toggle="modal" data-target="#modal-categorias" data-categoria="0" id="btn-subcat" style="visibility:hidden">Nueva</button>
          </div>
    	</div>
    </div>
@@ -72,6 +73,7 @@
    	<div class="box box-danger">
    		<div class="box-header with-border text-center">
    			<h3 class="box-title"><b>Subcategorias listadas</b></h3>
+			<button class="btn btn-danger" data-toggle="modal" data-target="#modal-subcategorias" data-categoria="0" data-supercat="0" id="btn-subcat2" style="visibility:hidden"><i class="fa fa-plus"></i></button>
    		</div>
    		<div class="box-body">
    			<table class="table table-bordered">
@@ -88,7 +90,6 @@
                   </tr>
    				</tbody>
    			</table>
-            <button class="btn btn-danger" data-toggle="modal" data-target="#modal-subcategorias" data-categoria="0" data-supercat="0" id="btn-subcat2" style="visibility:hidden">Nueva</button>
          </div>
    	</div>
    </div>
