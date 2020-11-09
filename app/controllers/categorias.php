@@ -362,6 +362,159 @@
 			print(json_encode($json));
 		}
 
+		  /**
+		 * Metodo que guarda o actualiza la informacion de las distintas categorias en la DB,
+		 * sube la imagen relacionada con la categoria a la ruta especificada en la
+		 * variable $patch
+		 * @var $trs Indica el tipo de operacion a realizar: Insertar o Actualizar
+		 * @return objeto json con la respuesta de guardar la informacion de la
+		 * categoria del modelo documental
+		 */
+		function update_subcategoria() {
+			$cat = $_POST['id_categoria'];
+			$sub = $_POST['sub_categoria'];
+			$id_sub = $_POST['id_sub_categoria'];
+			if (!empty($_POST['texto']) && !empty($cat) && !empty($sub) && !empty($id_sub)) {
+				$res = array();
+				$text = htmlspecialchars($_POST['texto']);
+				$cat_name = htmlspecialchars($_POST['sub_categoria']);
+				$name = '';
+				if (isset($_FILES['archivo'])) {
+					$name = $_FILES['archivo']['name'];
+					$arr = explode(".", $name);
+					$type = end($arr);
+					if ($type == 'jpeg' || $type == 'png' || $type == 'jpg' || $type == 'jpeg' || $type == 'zip' || $type == 'doc' || $type == 'docx' || $type == 'xls'
+					|| $type == 'xlsx' || $type == 'ppt' || $type == 'pptx' || $type == 'pdf') {
+						if (!$_FILES['archivo']['error']) {
+							$patch = PROJECTPATH . DS .'uploads' . DS;
+							$tmp = $_FILES['archivo']['tmp_name'];
+							$mov = move_uploaded_file($tmp, $patch . $_FILES['archivo']['name']);
+							if (!$mov) {
+								print(json_encode(['ok' => false, 'error' => $_FILES['archivo']]));
+								exit();
+							}
+						} else {
+							print(json_encode(['ok' => false, 'error' => $_FILES['archivo']['error']]));
+							exit();
+						}
+					}
+					else {
+						print(json_encode(['ok' => false, 'error' => 'Formato de imagen no valido' . $type]));
+						exit();
+					}
+				}
+				$response = CatDAO::update_subcat($id_sub,$cat_name,$name, $text, $_SESSION['admin']['id'],$cat,2);
+				print(json_encode($response));
+				exit();
+			}
+			else {
+				print(json_encode(['ok' => false, 'error' => 'Faltan campos por ingresar']));
+			}
+		}
+
+
+
+		 /**
+		 * Metodo que guarda o actualiza la informacion de las distintas categorias en la DB,
+		 * sube la imagen relacionada con la categoria a la ruta especificada en la
+		 * variable $patch
+		 * @var $trs Indica el tipo de operacion a realizar: Insertar o Actualizar
+		 * @return objeto json con la respuesta de guardar la informacion de la
+		 * categoria del modelo documental
+		 */
+		function update_categoria() {
+			$id_categoria = $_POST['id_categoria'];
+			if (!empty($_POST['texto']) && !empty($_POST['categoria-principal'])) {
+				$res = array();
+				$text = htmlspecialchars($_POST['texto']);
+				$cat_name = htmlspecialchars($_POST['cat_name']);
+				$name = '';
+				if (isset($_FILES['archivo'])) {
+					$name = $_FILES['archivo']['name'];
+					$arr = explode(".", $name);
+					$type = end($arr);
+					if ($type == 'jpeg' || $type == 'png' || $type == 'jpg' || $type == 'jpeg' || $type == 'zip' || $type == 'doc' || $type == 'docx' || $type == 'xls'
+					|| $type == 'xlsx' || $type == 'ppt' || $type == 'pptx' || $type == 'pdf') {
+						if (!$_FILES['archivo']['error']) {
+							$patch = PROJECTPATH . DS .'uploads' . DS;
+							$tmp = $_FILES['archivo']['tmp_name'];
+							$mov = move_uploaded_file($tmp, $patch . $_FILES['archivo']['name']);
+							if (!$mov) {
+								print(json_encode(['ok' => false, 'error' => $_FILES['archivo']]));
+								exit();
+							}
+						} else {
+							print(json_encode(['ok' => false, 'error' => $_FILES['archivo']['error']]));
+							exit();
+						}
+					}
+					else {
+						print(json_encode(['ok' => false, 'error' => 'Formato de imagen no valido' . $type]));
+						exit();
+					}
+				}
+				$response = CatDAO::update_cat($id_categoria,$cat_name,$name, $text, $_SESSION['admin']['id'],1);
+				print(json_encode($response));
+				exit();
+			}
+			else {
+				print(json_encode(['ok' => false, 'error' => 'Faltan campos por ingresar']));
+			}
+		}
+
+
+		 /**
+		 * Metodo que guarda o actualiza la informacion de las distintas categorias en la DB,
+		 * sube la imagen relacionada con la categoria a la ruta especificada en la
+		 * variable $patch
+		 * @var $trs Indica el tipo de operacion a realizar: Insertar o Actualizar
+		 * @return objeto json con la respuesta de guardar la informacion de la
+		 * categoria del modelo documental
+		 */
+		function update_sub_subcategoria() {
+			$cat = $_POST['id_subcategoria'];
+			$sub = $_POST['subcategoria'];
+			$id_sub_sub_categoria = $_POST['id_sub_sub_categoria'];
+			if (!empty($_POST['texto']) && !empty($cat) && !empty($sub)) {
+				$res = array();
+				$text = htmlspecialchars($_POST['texto']);
+				$cat_name = htmlspecialchars($_POST['subcategoria']);
+				$name = '';
+				if (isset($_FILES['archivo'])) {
+					$name = $_FILES['archivo']['name'];
+					$arr = explode(".", $name);
+					$type = end($arr);
+					if ($type == 'jpeg' || $type == 'png' || $type == 'jpg' || $type == 'jpeg' || $type == 'zip' || $type == 'doc' || $type == 'docx' || $type == 'xls'
+					|| $type == 'xlsx' || $type == 'ppt' || $type == 'pptx' || $type == 'pdf') {
+						if (!$_FILES['archivo']['error']) {
+							$patch = PROJECTPATH . DS .'uploads' . DS;
+							$tmp = $_FILES['archivo']['tmp_name'];
+							$mov = move_uploaded_file($tmp, $patch . $_FILES['archivo']['name']);
+							if (!$mov) {
+								print(json_encode(['ok' => false, 'error' => $_FILES['archivo']]));
+								exit();
+							}
+						} else {
+							print(json_encode(['ok' => false, 'error' => $_FILES['archivo']['error']]));
+							exit();
+						}
+					}
+					else {
+						print(json_encode(['ok' => false, 'error' => 'Formato de imagen no valido' . $type]));
+						exit();
+					}
+				}
+				$response = CatDAO::update_sub_subcat($id_sub_sub_categoria,$cat_name,$name, $text, $_SESSION['admin']['id'],$cat,3);
+				print(json_encode($response));
+				exit();
+			}
+			else {
+				print(json_encode(['ok' => false, 'error' => 'Faltan campos por ingresar']));
+			}
+		}
+
+
+
 	}
 
 ?>
