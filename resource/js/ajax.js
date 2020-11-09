@@ -629,6 +629,7 @@ $(document).ready(function () {
       function (response) {
         var res = JSON.parse(response);
         if (res.ok) {
+          $('#name_metadata').val('');
         	$.post(
 				"../../metadata/get_metatada_of_categorie/",
 				{ id_doc_cat: id },
@@ -658,7 +659,7 @@ $(document).ready(function () {
             <td>${element.nombre}</td>
             <td>${element.name_meta}</td>
             <td>${type}</td>
-            <td><button data-id_doc_cat_meta="${element.id}"  class="btn btn-info btn-sm btn-delete-doc-cat_metadata"><i class="fa fa-trash"></i></button></td>
+            <td><button data-id_doc_cat_meta="${element.id_doc_cat_meta}"  class="btn btn-info btn-sm btn-delete-doc-cat_metadata"><i class="fa fa-trash"></i></button></td>
             </tr>`);
           });
 				}
@@ -722,7 +723,7 @@ $(document).ready(function () {
               <td>${element.nombre}</td>
               <td>${element.name_meta}</td>
               <td>${type}</td>
-              <td><button data-id_doc_cat_meta="${element.id}"  class="btn btn-info btn-sm btn-delete-doc-cat_metadata"><i class="fa fa-trash"></i></button></td>
+              <td><button data-id_doc_cat_meta="${element.id_doc_cat_meta}"  class="btn btn-info btn-sm btn-delete-doc-cat_metadata"><i class="fa fa-trash"></i></button></td>
               </tr>`);
             });
         $("#add_metadata_doc").modal("show");
@@ -773,7 +774,7 @@ $(document).ready(function () {
             <td>${element.nombre}</td>
             <td>${element.name_meta}</td>
             <td>${type}</td>
-            <td><button data-id_doc_cat_meta="${element.id}"  class="btn btn-info btn-sm btn-delete-doc-cat_metadata"><i class="fa fa-trash"></i></button></td>
+            <td><button data-id_doc_cat_meta="${element.id_doc_cat_meta}"  class="btn btn-info btn-sm btn-delete-doc-cat_metadata"><i class="fa fa-trash"></i></button></td>
             </tr>`);
           });
 				});
@@ -903,14 +904,52 @@ $(document).ready(function () {
 		});
 	});
 
-	
+  // registrar categoria principal
+  $("#btn-category-principal").on("click", function () {
+    // var desc_img = document.getElementById("desc-img").value; 
+    var texto = document.getElementById("cont-category-principal").value;
+    // var action = document.getElementById("type-action").value;
+    var cat_name = document.getElementById("categoria-principal").value;
+    var img = document.getElementById("image_principal").files[0];
+    var formdata = new FormData(document.getElementById("form-save-categoria-principal"));
+
+    // if (action == "update") {
+    //   img = actualizarCategoria(img);
+    // }
+    formdata.append("archivo", img);
+    formdata.append("cat_name", cat_name);
+    formdata.append("texto", texto);
+    // formdata.append("categoria", cat);
+    // formdata.append("desc_img", desc_img);
+
+    $.ajax({
+      url: "../../categorias/registro_categoria",
+      type: "post",
+      data: formdata,
+      contentType: false,
+      processData: false,
+      success: function (res) {
+        var response = JSON.parse(res);
+        if (response.ok) {
+          location.reload(true);
+        } else {
+          $.jGrowl(response.error, {
+            position: "bottom-right",
+            header: "Fallo del Registro",
+            theme: "bg-red",
+            life: 5000,
+          });
+        }
+      },
+    });
+  });
 
 
-  	$("body").on("mouseenter", ".treeview-menu.menu-open li", function(e) {
-  		$(this).addClass("active");
-  	});
+  $("body").on("mouseenter", ".treeview-menu.menu-open li", function(e) {
+    $(this).addClass("active");
+  });
 
-  	$("body").on("mouseleave", ".treeview-menu.menu-open li", function(e) {
-  		$(this).removeClass("active");
-  	});
+  $("body").on("mouseleave", ".treeview-menu.menu-open li", function(e) {
+    $(this).removeClass("active");
+  });
 });
