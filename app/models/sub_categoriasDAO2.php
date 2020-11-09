@@ -20,7 +20,8 @@
 			try {
 
 				$conn = DB::instance();
-				$query = "SELECT c.id as id_sub, c.nombre as nom_sub, c.id_subcategoria FROM sub_categoria2 c";
+				$query = "SELECT c.id as id_sub, c.nombre as nom_sub, c.id_subcategoria,ifnull(co.`texto`,'') 'descripcion',ifnull(co.`imagen`,'') 'imagen' FROM sub_categoria2 c
+				LEFT JOIN contenido co on (co.`id`=c.`id` and co.`tipo_cat`=3)";
 				$res = $conn->prepare($query);
 				$res->execute();
 				$rows = $res->rowCount();

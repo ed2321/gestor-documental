@@ -19,7 +19,8 @@
 			try {
 
 				$conn = DB::instance();
-				$query = "SELECT c.id as id_cat_prin, c.nombre as nom_cat_prin FROM categorias c";
+				$query = "SELECT c.id as id_cat_prin, c.nombre as nom_cat_prin,ifnull(co.`texto`,'') 'descripcion',ifnull(co.`imagen`,'') 'imagen' FROM categorias c 
+				LEFT JOIN contenido co on (co.`id`=c.`id` and co.`tipo_cat`=1)";
 				$res = $conn->prepare($query);
 				$res->execute();
 				$rows = $res->rowCount();
