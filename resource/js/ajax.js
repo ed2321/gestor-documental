@@ -644,7 +644,8 @@ $(document).ready(function () {
 					);
           $("#id_doc_meta").append(
 						`<option value="3">Date</option>`
-					);
+          );
+          $('#list_doc_metadata_asing').DataTable().destroy();
 					$("#list_doc_metadata_asing > tbody").empty();
           $.each(res.data_asign, function (index, element) {
             var type = '';
@@ -662,7 +663,6 @@ $(document).ready(function () {
             <td><button data-id_doc_cat_meta="${element.id_doc_cat_meta}"  class="btn btn-info btn-sm btn-delete-doc-cat_metadata"><i class="fa fa-trash"></i></button></td>
             </tr>`);
           });
-          $('#list_doc_metadata_asing').DataTable().destroy();
           $('#list_doc_metadata_asing').DataTable();
         });
         }
@@ -709,7 +709,8 @@ $(document).ready(function () {
 					);
           $("#id_doc_meta").append(
 						`<option value="3">Date</option>`
-					);
+          );
+          $('#list_doc_metadata_asing').DataTable().destroy();
           $("#list_doc_metadata_asing > tbody").empty();
           $.each(res.data_asign, function (index, element) {
               var type = '';
@@ -727,7 +728,6 @@ $(document).ready(function () {
               <td><button data-id_doc_cat_meta="${element.id_doc_cat_meta}"  class="btn btn-info btn-sm btn-delete-doc-cat_metadata"><i class="fa fa-trash"></i></button></td>
               </tr>`);
             });
-            $('#list_doc_metadata_asing').DataTable().destroy();
             $('#list_doc_metadata_asing').DataTable();
             $("#add_metadata_doc").modal("show");
         }
@@ -762,7 +762,8 @@ $(document).ready(function () {
 					);
           $("#id_doc_meta").append(
 						`<option value="3">Date</option>`
-					);
+          );
+          $('#list_doc_metadata_asing').DataTable().destroy();
 					$("#list_doc_metadata_asing > tbody").empty();
           $.each(res.data_asign, function (index, element) {
             var type = '';
@@ -780,7 +781,6 @@ $(document).ready(function () {
             <td><button data-id_doc_cat_meta="${element.id_doc_cat_meta}"  class="btn btn-info btn-sm btn-delete-doc-cat_metadata"><i class="fa fa-trash"></i></button></td>
             </tr>`);
           });
-          $('#list_doc_metadata_asing').DataTable().destroy();
           $('#list_doc_metadata_asing').DataTable();
         });
 			}
