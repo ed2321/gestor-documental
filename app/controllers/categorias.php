@@ -114,6 +114,20 @@
 
 			print(json_encode($json));
 		}
+		/**
+		 *  Metodo que obtiene el id de la categoria hacer elminada y la envia al DAO
+		 */
+		function delete_cat() {
+			$id = $_POST['id_cat'];
+			if (!empty($id)) {
+				$json = SubCatDAO::delete_cat($id);
+			}
+			else {
+				$json = ['ok' => false, 'error' => 'Falta el id de la subcategoria'];
+			}
+
+			print(json_encode($json));
+		}
 
 		/**
 		 *  Metodo que obtiene el id de la subcategoria hacer elminada y la envia al DAO
@@ -201,7 +215,7 @@
 					print(json_encode(['ok' => false, 'error' => 'Debe cargar una imagen']));
 					exit();
 				}
-					$response = CatDAO::inser_cat($cat_name,$name, $text, $_SESSION['admin']['ID'],1);
+					$response = CatDAO::inser_cat($cat_name,$name, $text, $_SESSION['admin']['id'],1);
 					print(json_encode($response));
 						exit();
 
