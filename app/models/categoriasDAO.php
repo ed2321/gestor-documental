@@ -91,7 +91,7 @@
 
 				$conn = DB::instance();
 				$query = "SELECT c.id as id_cat_prin, c.nombre as nom_cat_prin,ifnull(co.`texto`,'') 'descripcion',ifnull(co.`imagen`,'') 'imagen' FROM categorias c 
-				LEFT JOIN contenido co on (co.`id`=c.`id` and co.`tipo_cat`=1) WHERE c.id = $id_cat ";
+				LEFT JOIN contenido co on (co.`id`=c.`id` and co.`tipo_cat`=1) WHERE c.id = $id_cat and co.`tipo_cat`=1 ";
 				$res = $conn->prepare($query);
 				$res->execute();
 				$rows = $res->rowCount();
@@ -117,7 +117,7 @@
 
 				$conn = DB::instance();
 				$query = "SELECT c.id as id_sub, c.nombre as nom_sub, c.id_categoria,ifnull(co.`texto`,'') 'descripcion',ifnull(co.`imagen`,'') 'imagen'  FROM sub_categoria c
-				LEFT JOIN contenido co on (co.`id`=c.`id` and co.`tipo_cat`=2) WHERE c.id = $id_sub_cat ";
+				LEFT JOIN contenido co on (co.`id`=c.`id` and co.`tipo_cat`=2) WHERE c.id = $id_sub_cat and co.`tipo_cat`=2 ";
 				$res = $conn->prepare($query);
 				$res->execute();
 				$rows = $res->rowCount();
@@ -143,7 +143,7 @@
 
 				$conn = DB::instance();
 				$query = "SELECT c.id as id_sub, c.nombre as nom_sub, c.id_subcategoria,ifnull(co.`texto`,'') 'descripcion',ifnull(co.`imagen`,'') 'imagen' FROM sub_categoria2 c
-				LEFT JOIN contenido co on (co.`id`=c.`id` and co.`tipo_cat`=3) WHERE c.id = $id_sub_sub_cat ";
+				LEFT JOIN contenido co on (co.`id`=c.`id` and co.`tipo_cat`=3) WHERE c.id = $id_sub_sub_cat  and co.`tipo_cat`=3 ";
 				$res = $conn->prepare($query);
 				$res->execute();
 				$rows = $res->rowCount();
