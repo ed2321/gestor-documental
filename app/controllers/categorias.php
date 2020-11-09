@@ -382,7 +382,7 @@
 				$text = htmlspecialchars($_POST['texto']);
 				$cat_name = htmlspecialchars($_POST['sub_categoria']);
 				$name = '';
-				if (isset($_FILES['archivo'])) {
+				if (isset($_FILES['archivo']) && !empty($_FILES['archivo']['name']) && !empty($_FILES['archivo'])) {
 					$name = $_FILES['archivo']['name'];
 					$arr = explode(".", $name);
 					$type = end($arr);
@@ -432,7 +432,7 @@
 				$text = htmlspecialchars($_POST['texto']);
 				$cat_name = htmlspecialchars($_POST['cat_name']);
 				$name = '';
-				if (isset($_FILES['archivo']) && isset($_FILES['archivo']['name']) &&   !empty($_FILES['archivo']) ) { 
+				if (isset($_FILES['archivo']) && !empty($_FILES['archivo']['name']) && !empty($_FILES['archivo']) ) { 
 					$name = $_FILES['archivo']['name'];
 					$arr = explode(".", $name);
 					$type = end($arr);
@@ -483,7 +483,7 @@
 				$text = htmlspecialchars($_POST['texto']);
 				$cat_name = htmlspecialchars($_POST['subcategoria']);
 				$name = '';
-				if (isset($_FILES['archivo'])) {
+				if (isset($_FILES['archivo']) && !empty($_FILES['archivo']['name']) && !empty($_FILES['archivo'])) {
 					$name = $_FILES['archivo']['name'];
 					$arr = explode(".", $name);
 					$type = end($arr);
