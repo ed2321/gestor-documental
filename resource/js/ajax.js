@@ -355,6 +355,7 @@ $(document).ready(function () {
               html += `<tr style="cursor:pointer" data-sub="${obj.id}">
 	   					   <td>${obj.nombre}</td>
 	                     <td><button data-id="${obj.id}" class="btn btn-danger btn-delete-categorias"><i class="fa fa-trash"></i></button></td>
+	                     <td><button data-id="${obj.id}" class="btn btn-danger btn-edit-categorias"><i class="fa fa-pencil"></i></button></td>
 	   					</tr>`;
               html2 += `<option value="${obj.id}">${obj.nombre}</option>`;
             }
@@ -465,7 +466,7 @@ $(document).ready(function () {
     var formdata = new FormData(form);
 
     $.ajax({
-      url: "../../categorias/insertSubCat/",
+      url: "../../categorias/registro_sub_subcategoria/",
       type: "post",
       data: formdata,
       contentType: false,
