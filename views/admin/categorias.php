@@ -21,7 +21,7 @@
    				<thead>
    					<tr>
 						   <th>Categoria</th>
-						   <th><button  class="btn btn-danger btn-add-categoria-menu center-block"><i class="fa fa-plus"></i></button></th>
+						   <th><button  class="btn btn-danger center-block" data-toggle="modal" data-target="#modal-categorias-super"><i class="fa fa-plus"></i></button></th>
    					</tr>
    				</thead>
    				<tbody id="tbl-cat">
@@ -159,6 +159,39 @@
       		<div class="modal-footer">
 	        	<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
 	        	<button type="button" class="btn btn-primary" id="btn-subcategoria-save2">Guardar</button>
+	      	</div>
+  		</form>
+    </div>
+  </div>
+</div>
+<div class="modal fade modal-danger" id="modal-categorias-super" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Formulario de registro de categorias</h4>
+      </div>
+       	<form method="post" enctype="multipart/form-data" id="form-save-categoria-principal">
+      		<div class="modal-body">
+  				<div class="form-group">
+                  	<label for="titulo">Nueva categoria</label>
+                  	<input type="text" class="form-control" id="categoria-principal" name="categoria-principal" placeholder="Categoria">
+                </div>
+				<input type="hidden" name="MAX_FILE_SIZE" VALUE="2000000">
+				<div class="form-group">
+					<input class="btn btn-danger" type="file" id="image_principal" name="archivo">
+				</div>      
+				<div class="form-group">
+					<label>Contenido</label>
+					<textarea class="form-control" rows="6" id="cont-category-principal" name="texto" placeholder="Ingrese el contenido." required="true"></textarea>
+				</div>
+				<div class="">
+					<button type="button" class="btn btn-info" id="btn-category-principal"><i class="fa fa-refresh"></i> Cargar Información</button>
+				</div>
+      		</div>
+      		<div class="modal-footer">
+	        	<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+	        	<!-- <button type="button" class="btn btn-primary" id="btn-subcategoria-save">Guardar</button> -->
 	      	</div>
   		</form>
     </div>
