@@ -79,12 +79,12 @@
 			$json;
 			if (!empty($id)) {
 				$json = [
-					"data_select" => MetadataDAO::list_metadata_not_used($id),
+					// "data_select" => MetadataDAO::list_metadata_not_used($id),
 					"data_asign" => MetadataDAO::list_metadata_used_doct($id)
 				];
 			} else {
 				$json = [
-					"data_select" => [],
+					// "data_select" => [],
 					"data_asign" => []
 				];
 			}
@@ -96,11 +96,12 @@
 		 * @return obj JSON con informacion de la transaccion
 		 */
 		function add_metatada_of_categorie() {
-			$id = htmlspecialchars($_POST['id_doc_cat']);
-			$id_meta = htmlspecialchars($_POST['id_doc_meta']);
+			$id_cat = htmlspecialchars($_POST['id_cat']);
+			$name_metadata = htmlspecialchars($_POST['name_metadata']);
+			$id_meta_type = htmlspecialchars($_POST['id_meta_type']);
 			$json;
-			if (!empty($id) && !empty($id_meta)) {
-				$res = MetadataDAO::add_metatada_of_categorie($id,$id_meta);
+			if (!empty($id_cat) && !empty($name_metadata) && !empty($id_meta_type)) {
+				$res = MetadataDAO::add_metatada_of_categorie($id_cat,$name_metadata,$id_meta_type);
 				$json = $res;
 				
 			} else {

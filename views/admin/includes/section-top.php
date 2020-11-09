@@ -174,7 +174,7 @@
                 </a>
               </li>
               <li>
-              <a href="../../control/metadata/"><i class="fa fa-circle-o text-red"></i> <span>lista de categorias</span>
+              <a href="../../gestion/categorias/"><i class="fa fa-circle-o text-red"></i> <span>lista de categorias</span>
                 </a>
               </li>
               <li style="display: none;">
