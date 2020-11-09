@@ -37,7 +37,7 @@
         });
         $('#example2').DataTable();
         $('#list_doc_cat').DataTable();
-        $('#list_doc_metadata_asing').DataTable();
+      //   $('#list_doc_metadata_asing').DataTable();
     });
   </script>
   <script>

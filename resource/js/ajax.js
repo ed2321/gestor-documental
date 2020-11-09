@@ -662,8 +662,9 @@ $(document).ready(function () {
             <td><button data-id_doc_cat_meta="${element.id_doc_cat_meta}"  class="btn btn-info btn-sm btn-delete-doc-cat_metadata"><i class="fa fa-trash"></i></button></td>
             </tr>`);
           });
-				}
-			  );
+          $('#list_doc_metadata_asing').DataTable().destroy();
+          $('#list_doc_metadata_asing').DataTable();
+        });
         }
         else {
         	$.jGrowl(res.error, {
@@ -726,7 +727,9 @@ $(document).ready(function () {
               <td><button data-id_doc_cat_meta="${element.id_doc_cat_meta}"  class="btn btn-info btn-sm btn-delete-doc-cat_metadata"><i class="fa fa-trash"></i></button></td>
               </tr>`);
             });
-        $("#add_metadata_doc").modal("show");
+            $('#list_doc_metadata_asing').DataTable().destroy();
+            $('#list_doc_metadata_asing').DataTable();
+            $("#add_metadata_doc").modal("show");
         }
     );
     
@@ -777,7 +780,9 @@ $(document).ready(function () {
             <td><button data-id_doc_cat_meta="${element.id_doc_cat_meta}"  class="btn btn-info btn-sm btn-delete-doc-cat_metadata"><i class="fa fa-trash"></i></button></td>
             </tr>`);
           });
-				});
+          $('#list_doc_metadata_asing').DataTable().destroy();
+          $('#list_doc_metadata_asing').DataTable();
+        });
 			}
 		});
 	});
