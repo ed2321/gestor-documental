@@ -161,6 +161,48 @@
 			}
 		}
 
+
+		public static function update_subcat($id_sub,$cat_name,$name, $text, $user,$id_catate,$type) {
+			try {
+				$conn = DB::instance();
+				$insert = "UPDATE `sub_categoria` SET nombre='$cat_name', id_categoria='$id_catate' WHERE id =$id_sub ";
+				$result = $conn->execute($insert);
+				$query = "UPDATE INTO `contenido` SET `imagen`='$name', `texto`='$text', `id_admin`='$user' WHERE `id`= $id_sub and `tipo_cat`='$type' ";
+				$result = $conn->execute($query);
+				$conn->close();
+				return ['ok' => true];
+			} catch(\PDOException $e) {
+				return ['ok' => true, 'error' => 'Error:! ' . $e->getMessage()];
+			}
+		}
+
+		public static function update_cat($id_cat,$cat_name,$name, $text,$user,$type) {
+			try {
+				$conn = DB::instance();
+				$insert = "UPDATE `categorias` SET nombre='$cat_name' WHERE id =$id_cat ";
+				$result = $conn->execute($insert);
+				$query = "UPDATE INTO `contenido` SET `imagen`='$name', `texto`='$text', `id_admin`='$user' WHERE `id`= $id_cat and `tipo_cat`='$type' ";
+				$result = $conn->execute($query);
+				$conn->close();
+				return ['ok' => true];
+			} catch(\PDOException $e) {
+				return ['ok' => true, 'error' => 'Error:! ' . $e->getMessage()];
+			}
+		}
+
+		public static function update_sub_subcat($id_sub_sub,$cat_name,$name, $text, $user,$id_catate,$type) {
+			try {
+				$conn = DB::instance();
+				$insert = "UPDATE `sub_categoria2` SET nombre='$cat_name', id_subcategoria='$id_catate' WHERE id =$id_sub_sub ";
+				$result = $conn->execute($insert);
+				$query = "UPDATE INTO `contenido` SET `imagen`='$name', `texto`='$text', `id_admin`='$user' WHERE `id`= $id_sub_sub and `tipo_cat`='$type' ";
+				$result = $conn->execute($query);
+				$conn->close();
+				return ['ok' => true];
+			} catch(\PDOException $e) {
+				return ['ok' => true, 'error' => 'Error:! ' . $e->getMessage()];
+			}
+		}
 		
 	}
 
