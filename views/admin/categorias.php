@@ -48,7 +48,7 @@
    	<div class="box box-danger">
    		<div class="box-header with-border text-center">
    			<h3 class="box-title"><b>Categorias listadas</b></h3>
-			<button class="btn btn-danger" data-toggle="modal" data-target="#modal-categorias" data-categoria="0" id="btn-subcat" style="visibility:hidden"><i class="fa fa-plus"></i></button>
+			<button class="btn btn-danger btn_modal_categorias" data-toggle="modal" data-target="#modal-categorias" data-categoria="0" id="btn-subcat" style="visibility:hidden"><i class="fa fa-plus"></i></button>
    		</div>
    		<div class="box-body">
    			<table class="table table-bordered">
@@ -118,7 +118,7 @@
                 </div>
   				<div class="form-group">
                   	<label for="titulo">Nueva subcategoria</label>
-                  	<input type="text" class="form-control" name="sub_categoria" placeholder="Subcategoria">
+                  	<input type="text" class="form-control" name="sub_categoria" placeholder="Subcategoria" id="sub_categoria">
 				</div>
 				<input type="hidden" name="MAX_FILE_SIZE" VALUE="2000000">
 				<div class="form-group">

@@ -353,9 +353,9 @@ $(document).ready(function () {
             var html2 = "";
             for (obj of res) {
               html += `<tr style="cursor:pointer" data-sub="${obj.id}">
-	   					   <td>${obj.nombre}</td>
-	                     <td><button data-id="${obj.id}" class="btn btn-danger btn-delete-categorias"><i class="fa fa-trash"></i></button></td>
-	                     <td><button data-id="${obj.id}" class="btn btn-danger btn-edit-categorias"><i class="fa fa-pencil"></i></button></td>
+	   					  <td>${obj.nombre}</td>
+	              <td><button data-id="${obj.id}" class="btn btn-danger btn-delete-categorias"><i class="fa fa-trash"></i></button></td>
+	              <td><button data-id="${obj.id}" class="btn btn-danger" data-toggle="modal" data-target="#modal-categorias" data-categoria="0" id="btn-subcat_categorias" ><i class="fa fa-pencil"></i></button></td>
 	   					</tr>`;
               html2 += `<option value="${obj.id}">${obj.nombre}</option>`;
             }
@@ -404,7 +404,32 @@ $(document).ready(function () {
     var button = $(event.relatedTarget); // Button that triggered the modal
     var id = button.data("categoria"); // Extract info from data-* attributes
     var select = $("#categoria-id");
+    var subcat2 = button.data("id");
+    $("#categoria-id").val('');
+    $("#sub_categoria").val('');
+    $("#cont-category-secondary").val('');
     select.val(id);
+    if(subcat2) {
+      $.post(
+        "../../categorias/get_sub_categori/",
+        { id_sub_cat: subcat2 },
+        function (response) {
+          var res = JSON.parse(response);
+          if (res.ok) {
+            $("#categoria-id").val(res.data.id_categoria);
+            $("#sub_categoria").val(res.data.nom_sub);
+            $("#cont-category-secondary").val(res.data.descripcion);
+
+          } else {
+            $.jGrowl(res.error, {
+              position: "bottom-right",
+              header: "Ocurrio un problema",
+              theme: "bg-red",
+              life: 5000,
+            });
+          }
+        });
+    }
   });
 
   /**
@@ -508,8 +533,7 @@ $(document).ready(function () {
             life: 5000,
           });
         }
-      }
-    );
+      });
   });
 
   /*
