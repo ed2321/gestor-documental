@@ -23,6 +23,7 @@
    					<tr>
 						   <th>Categoria</th>
 						   <th width="50">Delete</th>
+						   <th width="50">Update</th>
    					</tr>
    				</thead>
    				<tbody id="tbl-cat">
@@ -35,6 +36,9 @@
 											<td style="text-align: center;">
 				                  			<button data-id_cat="'.$c->getId().'" class="btn btn-danger btn-sm btn-delete-cat"><i class="fa fa-trash"></i></button>
 				                  			</td>
+											<td style="text-align: center;">
+											<button  data-id_cat="'.$c->getId().'" class="btn btn-danger center-block" id="modal-categorias-super-b"><i class="fa fa-pencil"></i></button>
+											</td>
 										</tr>');
    							}
    						}

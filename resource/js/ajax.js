@@ -592,6 +592,31 @@ $(document).ready(function () {
     $("#myModalDocCategori").modal("show");
   });
 
+
+  $("body").on("click", "#modal-categorias-super-b", function () {
+    var id = $(this).data("id_cat");
+    $.post(
+      "../../categorias/get_categori/",
+      { id_cat: id },
+      function (response) {
+        var res = JSON.parse(response);
+        if (res.ok) {
+          console.log(res);
+          $("#categoria-principal").val(res.data.nom_cat_prin);
+          $("#cont-category-principal").val(res.data.descripcion);
+          //falta el id del boton data atributo
+        } else {
+          $.jGrowl(res.error, {
+            position: "bottom-right",
+            header: "Ocurrio un problema",
+            theme: "bg-red",
+            life: 5000,
+          });
+        }
+      });
+    $("#modal-categorias-super").modal("show");
+  });
+
   /*
    *  Evento sobre el formulario de guardar y actualizar documentos de metadata que envia la informacion al servidor
    */
